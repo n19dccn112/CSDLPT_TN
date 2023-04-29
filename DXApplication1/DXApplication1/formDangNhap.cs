@@ -72,6 +72,7 @@ namespace DXApplication1
                     if (Program.myReader == null) return;
                     Program.myReader.Read();
                     Program.username = Program.myReader.GetString(0);
+                  
                     if (Convert.IsDBNull(Program.username))
                     {
                         MessageBox.Show("Không có quyền truy cập dữ liệu \n.", "", MessageBoxButtons.OK);
@@ -81,6 +82,7 @@ namespace DXApplication1
                     Program.mHoten = Program.myReader.GetString(1);
                     Program.mGroup = Program.myReader.GetString(2);
                     Program.MaLopSV = Program.myReader.GetString(3);
+                    Program.TenLopSV = Program.myReader.GetString(4);
                 }
                 catch (Exception)
                 {
@@ -109,6 +111,7 @@ namespace DXApplication1
                 }
                 catch (Exception)
                 {
+                    MessageBox.Show("Lỗi gọi sp đăng nhập giáo viên", "", MessageBoxButtons.OK);
                     throw;
                 }
                 if (Convert.IsDBNull(Program.mHoten) | Convert.IsDBNull(Program.username))
