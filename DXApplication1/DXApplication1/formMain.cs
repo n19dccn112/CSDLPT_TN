@@ -26,8 +26,8 @@ namespace DXApplication1
             //Đăng xuất
             ribnBaoCao.Visible = false;
             ribnHeThong.Visible = true;
-            barBtnDangXuat.Enabled = true;
-            barBtnTaoTaiKhoan.Enabled = barBtnDangNhap.Enabled = false;
+            barBtnDangNhap.Enabled = true;
+            barBtnTaoTaiKhoan.Enabled = barBtnDangXuat.Enabled = false;
 
             //Đăng nhập
             if (Program.mGroup == "SINHVIEN")
@@ -43,21 +43,21 @@ namespace DXApplication1
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
             }
             else if (Program.mGroup == "TRUONG")
             {
                 barBtnDangNhap.Enabled = false;
                 barBtnDangXuat.Enabled = barBtnTaoTaiKhoan.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
             }
             else if (Program.mGroup == "COSO")
             {
                 barBtnDangNhap.Enabled = false;
                 barBtnDangXuat.Enabled = barBtnTaoTaiKhoan.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
             }
         }
 
@@ -118,11 +118,11 @@ namespace DXApplication1
 
         private void btnLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(FormLopVKhoa));
+            Form frm = this.CheckExists(typeof(KhoaLop));
             if (frm != null) frm.Activate();
             else
             {
-                FormLopVKhoa f = new FormLopVKhoa();
+                KhoaLop f = new KhoaLop();
                 f.MdiParent = this;
                 f.Show();
             }

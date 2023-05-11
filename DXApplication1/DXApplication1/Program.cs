@@ -66,6 +66,7 @@ namespace DXApplication1
             try
             {
                 myreader = sqlcmd.ExecuteReader();
+
                 return myreader;
             }
             catch (SqlException ex)
@@ -164,7 +165,7 @@ namespace DXApplication1
                 //if (ex.Message.Contains("Error converting data type varchar to int"))
                 //    MessageBox.Show("Bạn format Cell lại cột \"Ngày Thi\" qua kiểu Number hoặc mở File Excel.");
                 //else 
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + strlenh);
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }

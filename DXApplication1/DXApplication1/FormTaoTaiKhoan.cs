@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DXApplication1
 {
-    public partial class FormTest : Form
+    public partial class FormTaoTaiKhoan : Form
     {
-        public FormTest()
+        public FormTaoTaiKhoan()
         {
             InitializeComponent();
         }

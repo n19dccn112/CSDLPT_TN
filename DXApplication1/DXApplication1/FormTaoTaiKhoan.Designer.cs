@@ -1,7 +1,7 @@
 ﻿
 namespace DXApplication1
 {
-    partial class FormTest
+    partial class FormTaoTaiKhoan
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace DXApplication1
         {
             this.SuspendLayout();
             // 
-            // FormTest
+            // FormTaoTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1451, 676);
-            this.Name = "FormTest";
-            this.Text = "FormTest";
+            this.ClientSize = new System.Drawing.Size(946, 464);
+            this.Name = "FormTaoTaiKhoan";
+            this.Text = "FormTaoTaiKhoan";
             this.ResumeLayout(false);
 
         }

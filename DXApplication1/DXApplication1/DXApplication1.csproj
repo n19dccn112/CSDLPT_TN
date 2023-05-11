@@ -69,12 +69,6 @@
     <Compile Include="formDangNhap.Designer.cs">
       <DependentUpon>formDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLopVKhoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLopVKhoa.Designer.cs">
-      <DependentUpon>FormLopVKhoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="formMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,11 +81,11 @@
     <Compile Include="FormMonHoc.Designer.cs">
       <DependentUpon>FormMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTest.cs">
+    <Compile Include="FormTaoTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTest.Designer.cs">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <Compile Include="FormTaoTaiKhoan.Designer.cs">
+      <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormThi.cs">
       <SubType>Form</SubType>
@@ -99,13 +93,16 @@
     <Compile Include="FormThi.Designer.cs">
       <DependentUpon>FormThi.cs</DependentUpon>
     </Compile>
+    <Compile Include="KhoaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoaLop.Designer.cs">
+      <DependentUpon>KhoaLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formDangNhap.resx">
       <DependentUpon>formDangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLopVKhoa.resx">
-      <DependentUpon>FormLopVKhoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
@@ -113,11 +110,14 @@
     <EmbeddedResource Include="FormMonHoc.resx">
       <DependentUpon>FormMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTest.resx">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <EmbeddedResource Include="FormTaoTaiKhoan.resx">
+      <DependentUpon>FormTaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThi.resx">
       <DependentUpon>FormThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoaLop.resx">
+      <DependentUpon>KhoaLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

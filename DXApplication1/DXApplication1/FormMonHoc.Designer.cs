@@ -30,9 +30,9 @@ namespace DXApplication1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMonHoc));
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label tENMHLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMonHoc));
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
@@ -58,15 +58,15 @@ namespace DXApplication1
             this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gbMonHoc = new System.Windows.Forms.GroupBox();
-            this.txtMaMH = new DevExpress.XtraEditors.TextEdit();
             this.txtTenMH = new DevExpress.XtraEditors.TextEdit();
+            this.txtMaMH = new DevExpress.XtraEditors.TextEdit();
             this.bdsBANGDIEM = new System.Windows.Forms.BindingSource(this.components);
             this.bANGDIEMTableAdapter = new DXApplication1.DSTableAdapters.BANGDIEMTableAdapter();
             this.tableAdapterManager = new DXApplication1.DSTableAdapters.TableAdapterManager();
-            this.bdsBODE = new System.Windows.Forms.BindingSource(this.components);
             this.bODETableAdapter = new DXApplication1.DSTableAdapters.BODETableAdapter();
-            this.bdsGVDK = new System.Windows.Forms.BindingSource(this.components);
             this.gIAOVIEN_DANGKYTableAdapter = new DXApplication1.DSTableAdapters.GIAOVIEN_DANGKYTableAdapter();
+            this.bdsBODE = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsGVDK = new System.Windows.Forms.BindingSource(this.components);
             mAMHLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -75,12 +75,30 @@ namespace DXApplication1
             ((System.ComponentModel.ISupportInitialize)(this.gcMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.gbMonHoc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaMH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaMH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBODE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mAMHLabel
+            // 
+            mAMHLabel.AutoSize = true;
+            mAMHLabel.Location = new System.Drawing.Point(66, 42);
+            mAMHLabel.Name = "mAMHLabel";
+            mAMHLabel.Size = new System.Drawing.Size(96, 20);
+            mAMHLabel.TabIndex = 0;
+            mAMHLabel.Text = "Mã môn học";
+            // 
+            // tENMHLabel
+            // 
+            tENMHLabel.AutoSize = true;
+            tENMHLabel.Location = new System.Drawing.Point(66, 104);
+            tENMHLabel.Name = "tENMHLabel";
+            tENMHLabel.Size = new System.Drawing.Size(101, 20);
+            tENMHLabel.TabIndex = 2;
+            tENMHLabel.Text = "Tên môn học";
             // 
             // barButtonItem1
             // 
@@ -328,14 +346,14 @@ namespace DXApplication1
             this.gbMonHoc.TabStop = false;
             this.gbMonHoc.Text = "Môn Học";
             // 
-            // mAMHLabel
+            // txtTenMH
             // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(66, 42);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(96, 20);
-            mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "Mã môn học";
+            this.txtTenMH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsMH, "TENMH", true));
+            this.txtTenMH.Location = new System.Drawing.Point(202, 100);
+            this.txtTenMH.MenuManager = this.barManager1;
+            this.txtTenMH.Name = "txtTenMH";
+            this.txtTenMH.Size = new System.Drawing.Size(396, 28);
+            this.txtTenMH.TabIndex = 3;
             // 
             // txtMaMH
             // 
@@ -345,24 +363,6 @@ namespace DXApplication1
             this.txtMaMH.Name = "txtMaMH";
             this.txtMaMH.Size = new System.Drawing.Size(150, 28);
             this.txtMaMH.TabIndex = 1;
-            // 
-            // tENMHLabel
-            // 
-            tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(66, 104);
-            tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(101, 20);
-            tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "Tên môn học";
-            // 
-            // txtTenMH
-            // 
-            this.txtTenMH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsMH, "TENMH", true));
-            this.txtTenMH.Location = new System.Drawing.Point(202, 100);
-            this.txtTenMH.MenuManager = this.barManager1;
-            this.txtTenMH.Name = "txtTenMH";
-            this.txtTenMH.Size = new System.Drawing.Size(396, 28);
-            this.txtTenMH.TabIndex = 3;
             // 
             // bdsBANGDIEM
             // 
@@ -388,23 +388,23 @@ namespace DXApplication1
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = DXApplication1.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // bODETableAdapter
+            // 
+            this.bODETableAdapter.ClearBeforeFill = true;
+            // 
+            // gIAOVIEN_DANGKYTableAdapter
+            // 
+            this.gIAOVIEN_DANGKYTableAdapter.ClearBeforeFill = true;
+            // 
             // bdsBODE
             // 
             this.bdsBODE.DataMember = "FK_BODE_MONHOC";
             this.bdsBODE.DataSource = this.bdsMH;
             // 
-            // bODETableAdapter
-            // 
-            this.bODETableAdapter.ClearBeforeFill = true;
-            // 
             // bdsGVDK
             // 
             this.bdsGVDK.DataMember = "FK_GIAOVIEN_DANGKY_MONHOC";
             this.bdsGVDK.DataSource = this.bdsMH;
-            // 
-            // gIAOVIEN_DANGKYTableAdapter
-            // 
-            this.gIAOVIEN_DANGKYTableAdapter.ClearBeforeFill = true;
             // 
             // FormMonHoc
             // 
@@ -428,8 +428,8 @@ namespace DXApplication1
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.gbMonHoc.ResumeLayout(false);
             this.gbMonHoc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaMH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaMH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBODE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).EndInit();
