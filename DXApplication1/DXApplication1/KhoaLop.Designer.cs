@@ -57,7 +57,6 @@ namespace DXApplication1
             this.panel_lopVEdt = new System.Windows.Forms.Panel();
             this.panelLop = new System.Windows.Forms.Panel();
             this.gcLop = new DevExpress.XtraGrid.GridControl();
-            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.bdsKhoa = new System.Windows.Forms.BindingSource(this.components);
             this.dS = new DXApplication1.DS();
@@ -78,6 +77,7 @@ namespace DXApplication1
             this.edtMaCS = new DevExpress.XtraEditors.TextEdit();
             this.edtTenKhoa = new DevExpress.XtraEditors.TextEdit();
             this.edtMaKH = new DevExpress.XtraEditors.TextEdit();
+            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.panelChuyenCS = new System.Windows.Forms.Panel();
             this.cmbCoSo = new System.Windows.Forms.ComboBox();
             this.panelKhoa = new System.Windows.Forms.Panel();
@@ -104,7 +104,6 @@ namespace DXApplication1
             this.panel_lopVEdt.SuspendLayout();
             this.panelLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcLop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
@@ -117,6 +116,7 @@ namespace DXApplication1
             ((System.ComponentModel.ISupportInitialize)(this.edtMaCS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtTenKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaKH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             this.panelChuyenCS.SuspendLayout();
             this.panelKhoa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).BeginInit();
@@ -383,11 +383,6 @@ namespace DXApplication1
             this.gcLop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
-            // bdsSV
-            // 
-            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSV.DataSource = this.bdsLop;
-            // 
             // bdsLop
             // 
             this.bdsLop.DataMember = "FK_LOP_KHOA";
@@ -566,6 +561,11 @@ namespace DXApplication1
             this.edtMaKH.Size = new System.Drawing.Size(219, 28);
             this.edtMaKH.TabIndex = 1;
             // 
+            // bdsSV
+            // 
+            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSV.DataSource = this.bdsLop;
+            // 
             // panelChuyenCS
             // 
             this.panelChuyenCS.Controls.Add(this.cmbCoSo);
@@ -711,7 +711,6 @@ namespace DXApplication1
             this.panelLop.ResumeLayout(false);
             this.panelLop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcLop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
@@ -726,6 +725,7 @@ namespace DXApplication1
             ((System.ComponentModel.ISupportInitialize)(this.edtMaCS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtTenKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaKH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             this.panelChuyenCS.ResumeLayout(false);
             this.panelKhoa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).EndInit();

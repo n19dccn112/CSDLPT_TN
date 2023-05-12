@@ -88,9 +88,6 @@ namespace DXApplication1
             cmbCoSo.SelectedIndex = Program.mCoso;
             Program.servername = cmbCoSo.SelectedValue.ToString();
 
-            if (Program.mGroup == "TRUONG") cmbCoSo.Enabled = true;
-            else cmbCoSo.Enabled = false;
-
             PhanQuyen();
         }
 

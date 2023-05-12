@@ -30,9 +30,9 @@ namespace DXApplication1
             barBtnTaoTaiKhoan.Enabled = barBtnDangXuat.Enabled = false;
 
             //Đăng nhập
-            if (Program.mGroup == "SINHVIEN")
+            if (Program.mGroup == "SinhVien")
             {
-                MessageBox.Show("sinh viên");
+                //MessageBox.Show("sinh viên");
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = true;
@@ -135,6 +135,18 @@ namespace DXApplication1
             else
             {
                 FormThi f = new FormThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barBtnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormTaoTaiKhoan));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormTaoTaiKhoan f = new FormTaoTaiKhoan();
                 f.MdiParent = this;
                 f.Show();
             }

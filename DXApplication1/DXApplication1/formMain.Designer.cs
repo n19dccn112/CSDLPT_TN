@@ -37,6 +37,7 @@ namespace DXApplication1
             this.barBtnDangXuat = new DevExpress.XtraBars.BarButtonItem();
             this.btnMH = new DevExpress.XtraBars.BarButtonItem();
             this.btnKhoaLop = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThi = new DevExpress.XtraBars.BarButtonItem();
             this.ribnHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribnHeThongCon = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribnDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -51,7 +52,6 @@ namespace DXApplication1
             this.lableMa = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelTenDN = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelNhom = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnThi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -90,11 +90,12 @@ namespace DXApplication1
             // 
             // barBtnTaoTaiKhoan
             // 
-            this.barBtnTaoTaiKhoan.Caption = "Tạo tài khoản";
+            this.barBtnTaoTaiKhoan.Caption = "Tài khoản";
             this.barBtnTaoTaiKhoan.Id = 2;
             this.barBtnTaoTaiKhoan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnTaoTaiKhoan.ImageOptions.Image")));
             this.barBtnTaoTaiKhoan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnTaoTaiKhoan.ImageOptions.LargeImage")));
             this.barBtnTaoTaiKhoan.Name = "barBtnTaoTaiKhoan";
+            this.barBtnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTaoTaiKhoan_ItemClick);
             // 
             // barBtnDangXuat
             // 
@@ -122,6 +123,15 @@ namespace DXApplication1
             this.btnKhoaLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKhoaLop.ImageOptions.LargeImage")));
             this.btnKhoaLop.Name = "btnKhoaLop";
             this.btnKhoaLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLop_ItemClick);
+            // 
+            // btnThi
+            // 
+            this.btnThi.Caption = "Thi";
+            this.btnThi.Id = 8;
+            this.btnThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThi.ImageOptions.Image")));
+            this.btnThi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThi.ImageOptions.LargeImage")));
+            this.btnThi.Name = "btnThi";
+            this.btnThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThi_ItemClick);
             // 
             // ribnHeThong
             // 
@@ -212,15 +222,6 @@ namespace DXApplication1
             this.labelNhom.Name = "labelNhom";
             this.labelNhom.Size = new System.Drawing.Size(62, 25);
             this.labelNhom.Text = "Nhóm";
-            // 
-            // btnThi
-            // 
-            this.btnThi.Caption = "Thi";
-            this.btnThi.Id = 8;
-            this.btnThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Thi.ImageOptions.Image")));
-            this.btnThi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("Thi.ImageOptions.LargeImage")));
-            this.btnThi.Name = "btnThi";
-            this.btnThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThi_ItemClick);
             // 
             // formMain
             // 

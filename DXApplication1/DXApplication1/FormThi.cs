@@ -116,8 +116,9 @@ namespace DXApplication1
 
             rdgCauHoi.SelectedIndex = 0;
             Diem1Cau = 10.0 / Double.Parse(label_SOCAUTHI.Text);
-            btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
-            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
+            btnChonMonThi.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
+            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = true;
+            gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
 
             phut = Convert.ToInt32(label_THOIGIAN.Text) - 1;
             giay = 60;
@@ -160,8 +161,9 @@ namespace DXApplication1
 
             rdgCauHoi.SelectedIndex = 0;
             Diem1Cau = 10.0 / Double.Parse(label_SOCAUTHI.Text);
-            btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
-            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
+            btnChonMonThi.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
+            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = true;
+            rdgDapAn.Visible = gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
 
             phut = Convert.ToInt32(label_THOIGIAN.Text) - 1;
             giay = 60;
@@ -182,7 +184,7 @@ namespace DXApplication1
             int index;
             for (int i = 0; i < dapAns.Length; i++)
             {
-                index = random.Next(i, dapAns.Length-1);
+                index = random.Next(i, dapAns.Length);
                 int temp = dapAns[i];
                 dapAns[i] = dapAns[index];
                 dapAns[index] = temp;
@@ -320,7 +322,7 @@ namespace DXApplication1
             rdgDapAn.Properties.Items.Clear();
             rdgCauHoi.Properties.Items.Clear();
             label_DIEM.Text = TongDiem.ToString();
-            label_DIEM.Visible = labelDiem.Visible = true;
+            btnChonMonThi.Enabled = label_DIEM.Visible = labelDiem.Visible = true;
             labelCauSo.Visible = labelCauHoi.Visible = false;
         }
 
@@ -359,7 +361,7 @@ namespace DXApplication1
             if (rdgDapAn.SelectedIndex != -1)
             {
                 deThi[rdgCauHoi.SelectedIndex].DaChonRandom = rdgDapAn.EditValue.ToString();
-
+                
                 rdgCauHoi.Properties.Items.GetItemByValue(rdgCauHoi.SelectedIndex + 1).Description
                             = "Câu " + rdgCauHoi.EditValue.ToString() + ":  " + deThi[rdgCauHoi.SelectedIndex].DaChonRandom;
 
@@ -398,6 +400,16 @@ namespace DXApplication1
                             }
                         break;
                 }
+                string sql = "exec SP_SuaBangThiTam @THUTU, @DACHON";
+                Hashtable paras = new Hashtable();
+                paras.Add("@THUTU", deThi[rdgCauHoi.SelectedIndex].ThuTu);
+                paras.Add("@DACHON", deThi[rdgCauHoi.SelectedIndex].DaChon);
+                
+                if (Program.ExecSqlNonQuery(sql, paras) != 0)
+                {
+                    MessageBox.Show("Lỗi ghi bảng tạm", "");
+                    return;
+                }
             }
         }
 
@@ -416,14 +428,24 @@ namespace DXApplication1
 
         private void btnChonMonThi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = gbTime.Visible = labelMaLop.Visible = label_MALOP.Visible = false;
-            btnChonMonThi.Enabled = btnPhucHoi.Enabled = btnHoanTac.Enabled = btnNopBai.Enabled = false;
+            try
+            {
+                this.sP_tabelTimKiemTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sP_tabelTimKiemTableAdapter.Fill(this.dS.SP_tabelTimKiem, Program.username);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            labelMAMH.Visible = labelDiem.Visible = label_DIEM.Visible = false;
+            rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = gbTime.Visible = false;
+            btnChonMonThi.Enabled = btnPhucHoi.Enabled = btnHoanTac.Enabled = btnNopBai.Enabled = btnThiTiep.Enabled = btnBDThi.Enabled = false;
         }
 
         private void gvSpTimKiem_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             DateTime now = DateTime.Now;
-            string ngaygio = now.ToString("d/M/yyyy");
+            string ngaygio = now.ToString("M/d/yyyy");
 
             string strLenh = "SELECT COUNT(*) FROM tempTableThi WHERE MASV='" + Program.username + "'";
             Program.myReader = Program.ExecSqlDataReader(strLenh);
@@ -433,10 +455,10 @@ namespace DXApplication1
             int count = Program.myReader.GetInt32(0);
             Program.conn.Close();
             Program.myReader.Close();
-            MessageBox.Show("1. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
+            //MessageBox.Show("1. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
             if (label_NGAYTHI.Text.Equals(ngaygio))
             {
-                MessageBox.Show("2. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
+                //MessageBox.Show("2. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
                 if (count != 0)
                 {
                     btnThiTiep.Enabled = true;
@@ -446,6 +468,17 @@ namespace DXApplication1
                 {
                     btnThiTiep.Enabled = false;
                     btnBDThi.Enabled = true;
+                }
+            }
+            else
+            {
+                if (count != 0)
+                {
+                    btnThiTiep.Enabled = btnBDThi.Enabled = false;
+                }
+                else
+                {
+                    btnBDThi.Enabled = false;
                 }
             }
         }
