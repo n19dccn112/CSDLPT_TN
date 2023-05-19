@@ -78,6 +78,7 @@ namespace DXApplication1
                 formDangNhap f = new formDangNhap();
                 f.MdiParent = this;
                 f.Show();
+                Program.dangXuat = false;
             }
         }
         private void barBtnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -94,6 +95,7 @@ namespace DXApplication1
 
                 Program.mGroup = "";
                 Program.mHoten = "";
+                Program.dangXuat = true;
                 foreach (Form frm in this.MdiChildren)
                 {
                     if (frm.ShowInTaskbar)

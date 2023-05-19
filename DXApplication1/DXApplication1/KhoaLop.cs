@@ -55,7 +55,7 @@ namespace DXApplication1
                 }
             }
             cmbTenKhoa.Visible = panelEdt.Enabled = edtKHOA_LOP.Visible = false;
-            gcKhoa.Enabled = gcLop.Enabled = true;
+            gcKhoa.Enabled = gcLop.Enabled = btnThoat.Enabled = true;
         }
 
         private void KhoaLop_Load(object sender, EventArgs e)
@@ -318,7 +318,7 @@ namespace DXApplication1
                     paras.Add("@TENKHOA", edtTenKhoa.Text);
                     DataTable dt = new DataTable();
                     dt = Program.ExecSqlDataTable(sql, paras);
-                    String maKhoa = dt.Rows[0][0].ToString();
+                    edtMaKH.Text = dt.Rows[0][0].ToString();
 
                     edtMaCS.Text = (Program.mCoso == 0) ? "CS1" : "CS2";
 
@@ -432,12 +432,9 @@ namespace DXApplication1
                 Program.password = Program.passwordDN;
             }
 
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.mCoso);
-                MessageBox.Show("Lỗi kết nối về cơ sở mới!");
-                
-            }
+            if (Program.dangXuat == false && Program.KetNoi() == 0)
+                MessageBox.Show("Lỗi kết nối về cơ sở mới!: mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.mCoso);
+
             else
             {
                 dS.EnforceConstraints = false;

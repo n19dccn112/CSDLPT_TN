@@ -18,10 +18,12 @@ namespace DXApplication1
     {
         int giay, phut = 0;
         double Diem1Cau, TongDiem = 0.0;
+        Boolean hasTime, hasReload = false;
         Dictionary<int, string> dict = new Dictionary<int, string>();
 
         List<CauHoi> deThi = new List<CauHoi>();
         BindingSource bdsDethi;
+
         public FormThi()
         {
             InitializeComponent();
@@ -109,23 +111,21 @@ namespace DXApplication1
 
             for (int i = 0; i < bdsDethi.Count; i++)
             {
-                rdgCauHoi.Properties.Items.Add(new RadioGroupItem(i + 1, "Câu " + (i + 1)));
                 deThi.Add(layCauHoThiTiep(i));
+
+                if (deThi[i].DaChonRandom.Equals("X"))
+                    rdgCauHoi.Properties.Items.Add(new RadioGroupItem(i + 1, "Câu " + (i + 1)));
+                else
+                    rdgCauHoi.Properties.Items.Add(new RadioGroupItem(i + 1, "Câu " + (i + 1) + ":  " + deThi[i].DaChonRandom));
+           
                 deThi[i].ThuTu = i;
             }
 
             rdgCauHoi.SelectedIndex = 0;
             Diem1Cau = 10.0 / Double.Parse(label_SOCAUTHI.Text);
-            btnChonMonThi.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
+            btnChonMonThi.Enabled = btnReload.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
             rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = true;
             gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
-
-            phut = Convert.ToInt32(label_THOIGIAN.Text) - 1;
-            giay = 60;
-            Timer timer = new Timer();
-            timer.Interval = 1000; // thiết lập interval là 1000 milliseconds = 1 giây
-            timer.Tick += timer1_Tick; // thêm sự kiện Tick cho Timer
-            timer.Start(); //bắt đầu đếm ngược
         }
 
         private void btnBDThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -134,8 +134,8 @@ namespace DXApplication1
             bdsDethi = new BindingSource();
             bdsDethi.DataSource = dtDeThi;
 
-            String sqlThemBangTam = "EXEC SP_ThemBangThiTam @CAUHOI, @THUTU, @MAMH, @MASV, @LAN, @ARANDOM, " +
-                                  "@BRANDOM, @CRANDOM, @DRANDOM, @DACHON";
+            String sqlThemBangTam = "EXEC SP_ThemBangThiTam @CAUHOI, @THUTU, @MAMH, @MASV, @LAN," +
+                                    " @ARANDOM, @BRANDOM, @CRANDOM, @DRANDOM, @DACHON, @THOIGIAN";
 
             for (int i = 0; i < bdsDethi.Count; i++)
             {
@@ -143,17 +143,18 @@ namespace DXApplication1
                 deThi.Add(layCauHoi(i));
                 deThi[i].ThuTu = i+1;
                 Hashtable parasThemBangTam = new Hashtable();
-
+                
+                parasThemBangTam.Add("@CAUHOI", Convert.ToInt32(deThi[i].IDCauHoi));
+                parasThemBangTam.Add("@THUTU", deThi[i].ThuTu);
                 parasThemBangTam.Add("@MAMH", labelMAMH.Text);
                 parasThemBangTam.Add("@MASV", Program.username);
                 parasThemBangTam.Add("@LAN", Convert.ToInt32(label_LAN.Text));
-                parasThemBangTam.Add("@CAUHOI", Convert.ToInt32(deThi[i].IDCauHoi));
-                parasThemBangTam.Add("@THUTU", i);
                 parasThemBangTam.Add("@ARANDOM", deThi[i].ThuTuDapAnRandom[0]);
                 parasThemBangTam.Add("@BRANDOM", deThi[i].ThuTuDapAnRandom[1]);
                 parasThemBangTam.Add("@CRANDOM", deThi[i].ThuTuDapAnRandom[2]);
                 parasThemBangTam.Add("@DRANDOM", deThi[i].ThuTuDapAnRandom[3]);
                 parasThemBangTam.Add("@DACHON", deThi[i].DaChon);
+                parasThemBangTam.Add("@THOIGIAN", Convert.ToSingle(label_THOIGIAN.Text));
 
                 if (Program.ExecSqlNonQuery(sqlThemBangTam, parasThemBangTam) != 0)
                     MessageBox.Show("Lỗi thêm bảng tạm câu hỏi " + i);
@@ -161,16 +162,9 @@ namespace DXApplication1
 
             rdgCauHoi.SelectedIndex = 0;
             Diem1Cau = 10.0 / Double.Parse(label_SOCAUTHI.Text);
-            btnChonMonThi.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
+            btnChonMonThi.Enabled = btnReload.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
             rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = true;
-            rdgDapAn.Visible = gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
-
-            phut = Convert.ToInt32(label_THOIGIAN.Text) - 1;
-            giay = 60;
-            Timer timer = new Timer();
-            timer.Interval = 1000; // thiết lập interval là 1000 milliseconds = 1 giây
-            timer.Tick += timer1_Tick; // thêm sự kiện Tick cho Timer
-            timer.Start(); //bắt đầu đếm ngược
+            rdgDapAn.Visible = gbTime.Visible = btnNopBai.Enabled = true;
         }
 
         public int[] Random(int[] dapAns)
@@ -205,15 +199,32 @@ namespace DXApplication1
             int[] thuTuDapAns = new int[4];
             for (int i=0; i<4; i++) thuTuDapAns[i]=i;
             cauHoi.ThuTuDapAnRandom = Random(thuTuDapAns).ToArray();
-
+                //MessageBox.Show("Lần 1: " + ((DataRowView)bdsDethi[vitri])["A"].ToString().Trim() + ", " + ((DataRowView)bdsDethi[vitri])["B"].ToString().Trim() + ", "
+                //    + ((DataRowView)bdsDethi[vitri])["C"].ToString().Trim() + ", " + ((DataRowView)bdsDethi[vitri])["D"].ToString().Trim(), "");
+                //MessageBox.Show("Lần 1: " + cauHoi.ThuTuDapAnRandom[0] + ", " + cauHoi.ThuTuDapAnRandom[1] + ", "
+                //    + cauHoi.ThuTuDapAnRandom[2] + ", " + cauHoi.ThuTuDapAnRandom[3], "");
+  
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[0]] = ((DataRowView)bdsDethi[vitri])["A"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[1]] = ((DataRowView)bdsDethi[vitri])["B"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[2]] = ((DataRowView)bdsDethi[vitri])["C"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[3]] = ((DataRowView)bdsDethi[vitri])["D"].ToString().Trim();
-
+            
+                //MessageBox.Show("Lần 2: " + cauHoi.DapAnABCD[0] + ", " + cauHoi.DapAnABCD[1] + ", " +
+                //cauHoi.DapAnABCD[2] + ", " + cauHoi.DapAnABCD[3], "");
+            
             cauHoi.DapAn = ((DataRowView)bdsDethi[vitri])["DAP_AN"].ToString().Trim();
             cauHoi.DaChonRandom = "X";
             cauHoi.DaChon = "X";
+
+            if(phut == 0 && giay == 0)
+            {
+                phut = Convert.ToInt32(label_THOIGIAN.Text) - 1;
+                giay = 60;
+                Timer timer = new Timer();
+                timer.Interval = 1000; // thiết lập interval là 1000 milliseconds = 1 giây
+                timer.Tick += timer1_Tick; // thêm sự kiện Tick cho Timer
+                timer.Start(); //bắt đầu đếm ngược
+            }
 
             return cauHoi;
         }
@@ -227,17 +238,23 @@ namespace DXApplication1
             cauHoi.TrinhDo = ((DataRowView)bdsDethi[vitri])["TRINHDO"].ToString().Trim();
             cauHoi.NoiDung = ((DataRowView)bdsDethi[vitri])["NOIDUNG"].ToString().Trim();
 
-            int[] thuTuDapAns = new int[4];
-            thuTuDapAns[0] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["ARANDOM"].ToString().Trim());
-            thuTuDapAns[1] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["BRANDOM"].ToString().Trim());
-            thuTuDapAns[2] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["CRANDOM"].ToString().Trim());
-            thuTuDapAns[3] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["DRANDOM"].ToString().Trim());
-            cauHoi.ThuTuDapAnRandom = Random(thuTuDapAns).ToArray();
+            cauHoi.ThuTuDapAnRandom[0] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["ARANDOM"].ToString().Trim());
+            cauHoi.ThuTuDapAnRandom[1] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["BRANDOM"].ToString().Trim());
+            cauHoi.ThuTuDapAnRandom[2] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["CRANDOM"].ToString().Trim());
+            cauHoi.ThuTuDapAnRandom[3] = Convert.ToInt32(((DataRowView)bdsDethi[vitri])["DRANDOM"].ToString().Trim());
+
+            //MessageBox.Show("Lần 1: " + ((DataRowView)bdsDethi[vitri])["A"].ToString().Trim() + ", " + ((DataRowView)bdsDethi[vitri])["B"].ToString().Trim() + ", "
+            //      + ((DataRowView)bdsDethi[vitri])["C"].ToString().Trim() + ", " + ((DataRowView)bdsDethi[vitri])["D"].ToString().Trim(), "");
+            //MessageBox.Show("Lần 1: " + cauHoi.ThuTuDapAnRandom[0] + ", " + cauHoi.ThuTuDapAnRandom[1] + ", "
+            //    + cauHoi.ThuTuDapAnRandom[2] + ", " + cauHoi.ThuTuDapAnRandom[3], "");
 
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[0]] = ((DataRowView)bdsDethi[vitri])["A"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[1]] = ((DataRowView)bdsDethi[vitri])["B"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[2]] = ((DataRowView)bdsDethi[vitri])["C"].ToString().Trim();
             cauHoi.DapAnABCD[cauHoi.ThuTuDapAnRandom[3]] = ((DataRowView)bdsDethi[vitri])["D"].ToString().Trim();
+
+            //MessageBox.Show("Lần 2: " + cauHoi.DapAnABCD[0] + ", " + cauHoi.DapAnABCD[1] + ", " +
+            //cauHoi.DapAnABCD[2] + ", " + cauHoi.DapAnABCD[3], "");
 
             cauHoi.DapAn = ((DataRowView)bdsDethi[vitri])["DAP_AN"].ToString().Trim();
             cauHoi.DaChon = ((DataRowView)bdsDethi[vitri])["DACHON"].ToString().Trim();
@@ -256,6 +273,22 @@ namespace DXApplication1
                 case "D":
                     cauHoi.DaChonRandom = dict[cauHoi.ThuTuDapAnRandom[3]];
                     break;
+                case "X":
+                    cauHoi.DaChonRandom = "X";
+                    break;
+            }
+
+            if (!hasTime)
+            {
+                float thoigianthi = Convert.ToSingle(((DataRowView)bdsDethi[vitri])["THOIGIAN"].ToString().Trim());
+                //MessageBox.Show(thoigianthi + "", "");
+                phut = Convert.ToInt32(Math.Floor(thoigianthi));
+                giay = Convert.ToInt32((thoigianthi - phut) * 60f);
+                Timer timer = new Timer();
+                timer.Interval = 1000; // thiết lập interval là 1000 milliseconds = 1 giây
+                timer.Tick += timer1_Tick; // thêm sự kiện Tick cho Timer
+                timer.Start(); //bắt đầu đếm ngược
+                hasTime = true;
             }
 
             return cauHoi;
@@ -322,7 +355,7 @@ namespace DXApplication1
             rdgDapAn.Properties.Items.Clear();
             rdgCauHoi.Properties.Items.Clear();
             label_DIEM.Text = TongDiem.ToString();
-            btnChonMonThi.Enabled = label_DIEM.Visible = labelDiem.Visible = true;
+            btnReload.Enabled = btnChonMonThi.Enabled = label_DIEM.Visible = labelDiem.Visible = true;
             labelCauSo.Visible = labelCauHoi.Visible = false;
         }
 
@@ -360,6 +393,7 @@ namespace DXApplication1
         {
             if (rdgDapAn.SelectedIndex != -1)
             {
+                //MessageBox.Show("Ở đáp án: " + rdgCauHoi.SelectedIndex, "");
                 deThi[rdgCauHoi.SelectedIndex].DaChonRandom = rdgDapAn.EditValue.ToString();
                 
                 rdgCauHoi.Properties.Items.GetItemByValue(rdgCauHoi.SelectedIndex + 1).Description
@@ -400,11 +434,16 @@ namespace DXApplication1
                             }
                         break;
                 }
-                string sql = "exec SP_SuaBangThiTam @THUTU, @DACHON";
+                string sql = "exec SP_SuaDaChonBangTam @THUTU, @MASV, @LAN, @MAMH, @DACHON";
                 Hashtable paras = new Hashtable();
                 paras.Add("@THUTU", deThi[rdgCauHoi.SelectedIndex].ThuTu);
+                paras.Add("@MAMH", labelMAMH.Text);
+                paras.Add("@MASV", Program.username);
+                paras.Add("@LAN", Convert.ToInt32(label_LAN.Text));
                 paras.Add("@DACHON", deThi[rdgCauHoi.SelectedIndex].DaChon);
-                
+                //MessageBox.Show("exec SP_SuaDaChonBangTam @THUTU, @MASV, @LAN, @MAMH, @DACHON: " +
+                //    "" + deThi[rdgCauHoi.SelectedIndex].ThuTu + ", " + deThi[rdgCauHoi.SelectedIndex].DaChon, "");
+
                 if (Program.ExecSqlNonQuery(sql, paras) != 0)
                 {
                     MessageBox.Show("Lỗi ghi bảng tạm", "");
@@ -419,11 +458,31 @@ namespace DXApplication1
             rdgDapAn.Properties.Items.Clear();
             labelCauSo.Text = "Câu " + rdgCauHoi.EditValue.ToString() + ": ";
             labelCauHoi.Text = deThi[rdgCauHoi.SelectedIndex].NoiDung;
+           // MessageBox.Show("Ở câu hỏi: " + rdgCauHoi.SelectedIndex, "");
 
             rdgDapAn.Properties.Items.Add(new RadioGroupItem("A", "A. " + deThi[rdgCauHoi.SelectedIndex].DapAnABCD[0]));
             rdgDapAn.Properties.Items.Add(new RadioGroupItem("B", "B. " + deThi[rdgCauHoi.SelectedIndex].DapAnABCD[1]));
             rdgDapAn.Properties.Items.Add(new RadioGroupItem("C", "C. " + deThi[rdgCauHoi.SelectedIndex].DapAnABCD[2]));
             rdgDapAn.Properties.Items.Add(new RadioGroupItem("D", "D. " + deThi[rdgCauHoi.SelectedIndex].DapAnABCD[3]));
+
+            switch (deThi[rdgCauHoi.SelectedIndex].DaChonRandom)
+            {
+                case "A":
+                    rdgDapAn.SelectedIndex = 0;
+                    break;
+                case "B":
+                    rdgDapAn.SelectedIndex = 1;
+                    break;
+                case "C":
+                    rdgDapAn.SelectedIndex = 2;
+                    break;
+                case "D":
+                    rdgDapAn.SelectedIndex = 3;
+                    break;
+                case "X":
+                    rdgDapAn.SelectedIndex = -1;
+                    break;
+            }
         }
 
         private void btnChonMonThi_ItemClick(object sender, ItemClickEventArgs e)
@@ -437,6 +496,7 @@ namespace DXApplication1
             {
                 MessageBox.Show(ex.Message);
             }
+            gcSpTimKiem.Visible = true;
             labelMAMH.Visible = labelDiem.Visible = label_DIEM.Visible = false;
             rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = gbTime.Visible = false;
             btnChonMonThi.Enabled = btnPhucHoi.Enabled = btnHoanTac.Enabled = btnNopBai.Enabled = btnThiTiep.Enabled = btnBDThi.Enabled = false;
@@ -444,21 +504,46 @@ namespace DXApplication1
 
         private void gvSpTimKiem_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
+            if (hasReload)
+                return;
             DateTime now = DateTime.Now;
             string ngaygio = now.ToString("M/d/yyyy");
 
-            string strLenh = "SELECT COUNT(*) FROM tempTableThi WHERE MASV='" + Program.username + "'";
-            Program.myReader = Program.ExecSqlDataReader(strLenh);
-            
-            if (Program.myReader == null) return;
+            string strLenh = "EXEC SP_CheckThiTiep @MAMH, @MASV, @LAN";
+            Hashtable paras = new Hashtable();
+            paras.Add("@MAMH", labelMAMH.Text);
+            paras.Add("@MASV", Program.username);
+            paras.Add("@LAN", Convert.ToInt32(label_LAN.Text));
+
+            Program.myReader = Program.ExecSqlDataReader(strLenh, paras);
+
+            if (Program.myReader == null)
+            {
+                MessageBox.Show("Return null", "");
+                return;
+            }
             Program.myReader.Read();
             int count = Program.myReader.GetInt32(0);
+            
             Program.conn.Close();
             Program.myReader.Close();
-            //MessageBox.Show("1. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
-            if (label_NGAYTHI.Text.Equals(ngaygio))
+            //MessageBox.Show("1. now: " + count, "");
+            if (Program.mGroup == "GIANGVIEN" || Program.mGroup == "COSO")
             {
-                //MessageBox.Show("2. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
+                if (count != 0)
+                {
+                    btnThiTiep.Enabled = true;
+                    btnBDThi.Enabled = false;
+                }
+                else
+                {
+                    btnThiTiep.Enabled = false;
+                    btnBDThi.Enabled = true;
+                }
+            }    
+            else if (label_NGAYTHI.Text.Equals(ngaygio))
+            {
+             //   MessageBox.Show("2. now: " + ngaygio + "= sp: " + label_NGAYTHI.Text, "");
                 if (count != 0)
                 {
                     btnThiTiep.Enabled = true;
@@ -485,6 +570,7 @@ namespace DXApplication1
 
         private void btnReload_ItemClick(object sender, ItemClickEventArgs e)
         {
+            hasReload = true;
             try
             {
                 this.sP_tabelTimKiemTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -495,12 +581,14 @@ namespace DXApplication1
                 MessageBox.Show("Lỗi Reload: " + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
+            hasReload = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (phut != 0 && giay != 0)
-                giay--;
+            if (phut == 0 && giay == 0)
+                return;
+            giay--;
             if (giay == 0)
             {
                 phut--;
@@ -511,6 +599,17 @@ namespace DXApplication1
                 xuLiSauNopBai();
             }
             labelCONLAI.Text = $"{phut:00}:{giay:00}";
+
+            float thoigian = phut + (giay / 60.0f);
+            string sql = "exec SP_SuaThoiGianBangTam @THOIGIAN, @MASV, @LAN, @MAMH";
+            Hashtable paras = new Hashtable();
+            paras.Add("@MAMH", labelMAMH.Text);
+            paras.Add("@MASV", Program.username);
+            paras.Add("@LAN", Convert.ToInt32(label_LAN.Text));
+            paras.Add("@THOIGIAN", thoigian);
+
+            if (Program.ExecSqlNonQuery(sql, paras) != 0)
+                MessageBox.Show("Lỗi SP Sửa thời gian bảng thi tạm", "");
         }
     }
 }

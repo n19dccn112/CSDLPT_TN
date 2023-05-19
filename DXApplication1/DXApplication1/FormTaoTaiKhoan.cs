@@ -37,13 +37,6 @@ namespace DXApplication1
 
             labelLoginName.Visible = btnGhi.Enabled = btnHuy.Enabled = labelNhom.Visible = label_NHOM.Visible = false;
             cmbNhom.Visible = cmbLoginName.Visible = textBoxMK.Visible = labelMK.Visible = false;
-            string[] dsNhom = new string[2];
-            dsNhom[0] = "COSO";
-            dsNhom[1] = "GIANGVIEN";
-
-            cmbNhom.Items.Clear();
-            cmbNhom.Items.AddRange(dsNhom);
-            cmbNhom.SelectedIndex = 0;
         }
 
         private void FormTaoTaiKhoan_Load(object sender, EventArgs e)
@@ -58,12 +51,21 @@ namespace DXApplication1
             cmbCoSo.SelectedIndex = Program.mCoso;
             Program.servername = cmbCoSo.SelectedValue.ToString();
 
+            string[] dsNhom = new string[2];
+            dsNhom[0] = "COSO";
+            dsNhom[1] = "GIANGVIEN";
+
+            cmbNhom.Items.Clear();
+            cmbNhom.Items.AddRange(dsNhom);
+            cmbNhom.SelectedIndex = 0;
+
             PhanQuyen();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            labelNhom.Visible = label_NHOM.Visible = cmbNhom.Visible = labelLoginName.Visible = cmbLoginName.Visible = textBoxMK.Visible = labelMK.Visible = true;
+            labelNhom.Visible = label_NHOM.Visible = cmbNhom.Visible = labelLoginName.Visible = true;
+            btnHuy.Enabled = cmbLoginName.Visible = textBoxMK.Visible = labelMK.Visible = true;
             gcGiaoVien.Enabled = false;
 
             String sql = "EXEC SP_TaoLoginName @HO, @TEN";
@@ -131,6 +133,11 @@ namespace DXApplication1
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(textBoxMK.Text.Equals(""))
+            {
+                MessageBox.Show("Mật khẩu không được trống", "");
+                return;
+            }
             string sql = "EXEC SP_TAOLOGIN @LGNAME, @PASS, @USERNAME, @ROLE";
 
             Hashtable paras = new Hashtable();
@@ -143,7 +150,10 @@ namespace DXApplication1
             Reload();
             gcGiaoVien.Enabled = btnXoa.Enabled = btnThoat.Enabled = btnReload.Enabled = true;
             if (Program.ExecSqlNonQuery(sql, paras) != 0)
+            {
+                MessageBox.Show("Lỗi ghi tài khoản", "");
                 return;
+            }
         }
 
         private void Reload()
@@ -172,8 +182,9 @@ namespace DXApplication1
         {
             bdsGV.CancelEdit();
             labelNhom.Enabled = cmbNhom.Visible = labelLoginName.Visible = cmbLoginName.Visible = textBoxMK.Visible = labelMK.Visible = false;
-            PhanQuyen();
             gcGiaoVien.Enabled = true;
+            Reload();
+            PhanQuyen();
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -206,12 +217,9 @@ namespace DXApplication1
                 Program.password = Program.passwordDN;
             }
 
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.mCoso);
-                MessageBox.Show("Lỗi kết nối về cơ sở mới!");
-
-            }
+            if (Program.dangXuat == false && Program.KetNoi() == 0)
+                MessageBox.Show("Lỗi kết nối về cơ sở mới!: mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.mCoso);
+             
             else
             {
                 dS.EnforceConstraints = false;
