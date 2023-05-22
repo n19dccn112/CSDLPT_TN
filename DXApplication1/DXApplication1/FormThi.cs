@@ -18,7 +18,7 @@ namespace DXApplication1
     {
         int giay, phut = 0;
         double Diem1Cau, TongDiem = 0.0;
-        Boolean hasTime, hasReload = false;
+        Boolean hasTime = false;
         Dictionary<int, string> dict = new Dictionary<int, string>();
 
         List<CauHoi> deThi = new List<CauHoi>();
@@ -125,7 +125,7 @@ namespace DXApplication1
             Diem1Cau = 10.0 / Double.Parse(label_SOCAUTHI.Text);
             btnChonMonThi.Enabled = btnReload.Enabled = btnBDThi.Enabled = btnThoat.Enabled = gcSpTimKiem.Visible = btnThiTiep.Enabled = false;
             rdgCauHoi.Visible = labelCauSo.Visible = labelCauHoi.Visible = rdgDapAn.Visible = true;
-            gbTime.Visible = btnChonMonThi.Enabled = btnNopBai.Enabled = true;
+            gbTime.Visible = btnNopBai.Enabled = true;
         }
 
         private void btnBDThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -504,7 +504,7 @@ namespace DXApplication1
 
         private void gvSpTimKiem_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (hasReload)
+            if (label_LAN.Text=="")
                 return;
             DateTime now = DateTime.Now;
             string ngaygio = now.ToString("M/d/yyyy");
@@ -570,7 +570,6 @@ namespace DXApplication1
 
         private void btnReload_ItemClick(object sender, ItemClickEventArgs e)
         {
-            hasReload = true;
             try
             {
                 this.sP_tabelTimKiemTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -581,7 +580,6 @@ namespace DXApplication1
                 MessageBox.Show("Lỗi Reload: " + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
-            hasReload = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -46,7 +46,7 @@ namespace DXApplication1 {
         
         private SP_tabelTimKiemDataTable tableSP_tabelTimKiem;
         
-        private V_KhoaAddLopDataTable tableV_KhoaAddLop;
+        private SP_XEMLAIBAITHIDataTable tableSP_XEMLAIBAITHI;
         
         private global::System.Data.DataRelation relationFK_BANGDIEM_MONHOC;
         
@@ -135,8 +135,8 @@ namespace DXApplication1 {
                 if ((ds.Tables["SP_tabelTimKiem"] != null)) {
                     base.Tables.Add(new SP_tabelTimKiemDataTable(ds.Tables["SP_tabelTimKiem"]));
                 }
-                if ((ds.Tables["V_KhoaAddLop"] != null)) {
-                    base.Tables.Add(new V_KhoaAddLopDataTable(ds.Tables["V_KhoaAddLop"]));
+                if ((ds.Tables["SP_XEMLAIBAITHI"] != null)) {
+                    base.Tables.Add(new SP_XEMLAIBAITHIDataTable(ds.Tables["SP_XEMLAIBAITHI"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -270,9 +270,9 @@ namespace DXApplication1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public V_KhoaAddLopDataTable V_KhoaAddLop {
+        public SP_XEMLAIBAITHIDataTable SP_XEMLAIBAITHI {
             get {
-                return this.tableV_KhoaAddLop;
+                return this.tableSP_XEMLAIBAITHI;
             }
         }
         
@@ -376,8 +376,8 @@ namespace DXApplication1 {
                 if ((ds.Tables["SP_tabelTimKiem"] != null)) {
                     base.Tables.Add(new SP_tabelTimKiemDataTable(ds.Tables["SP_tabelTimKiem"]));
                 }
-                if ((ds.Tables["V_KhoaAddLop"] != null)) {
-                    base.Tables.Add(new V_KhoaAddLopDataTable(ds.Tables["V_KhoaAddLop"]));
+                if ((ds.Tables["SP_XEMLAIBAITHI"] != null)) {
+                    base.Tables.Add(new SP_XEMLAIBAITHIDataTable(ds.Tables["SP_XEMLAIBAITHI"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -478,10 +478,10 @@ namespace DXApplication1 {
                     this.tableSP_tabelTimKiem.InitVars();
                 }
             }
-            this.tableV_KhoaAddLop = ((V_KhoaAddLopDataTable)(base.Tables["V_KhoaAddLop"]));
+            this.tableSP_XEMLAIBAITHI = ((SP_XEMLAIBAITHIDataTable)(base.Tables["SP_XEMLAIBAITHI"]));
             if ((initTable == true)) {
-                if ((this.tableV_KhoaAddLop != null)) {
-                    this.tableV_KhoaAddLop.InitVars();
+                if ((this.tableSP_XEMLAIBAITHI != null)) {
+                    this.tableSP_XEMLAIBAITHI.InitVars();
                 }
             }
             this.relationFK_BANGDIEM_MONHOC = this.Relations["FK_BANGDIEM_MONHOC"];
@@ -529,8 +529,8 @@ namespace DXApplication1 {
             base.Tables.Add(this.tableBAITHI);
             this.tableSP_tabelTimKiem = new SP_tabelTimKiemDataTable();
             base.Tables.Add(this.tableSP_tabelTimKiem);
-            this.tableV_KhoaAddLop = new V_KhoaAddLopDataTable();
-            base.Tables.Add(this.tableV_KhoaAddLop);
+            this.tableSP_XEMLAIBAITHI = new SP_XEMLAIBAITHIDataTable();
+            base.Tables.Add(this.tableSP_XEMLAIBAITHI);
             this.relationFK_BANGDIEM_MONHOC = new global::System.Data.DataRelation("FK_BANGDIEM_MONHOC", new global::System.Data.DataColumn[] {
                         this.tableMONHOC.MAMHColumn}, new global::System.Data.DataColumn[] {
                         this.tableBANGDIEM.MAMHColumn}, false);
@@ -653,7 +653,7 @@ namespace DXApplication1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeV_KhoaAddLop() {
+        private bool ShouldSerializeSP_XEMLAIBAITHI() {
             return false;
         }
         
@@ -746,7 +746,7 @@ namespace DXApplication1 {
         public delegate void SP_tabelTimKiemRowChangeEventHandler(object sender, SP_tabelTimKiemRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void V_KhoaAddLopRowChangeEventHandler(object sender, V_KhoaAddLopRowChangeEvent e);
+        public delegate void SP_XEMLAIBAITHIRowChangeEventHandler(object sender, SP_XEMLAIBAITHIRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4437,22 +4437,28 @@ namespace DXApplication1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class V_KhoaAddLopDataTable : global::System.Data.TypedTableBase<V_KhoaAddLopRow> {
+        public partial class SP_XEMLAIBAITHIDataTable : global::System.Data.TypedTableBase<SP_XEMLAIBAITHIRow> {
             
-            private global::System.Data.DataColumn columnTENLOP;
+            private global::System.Data.DataColumn columnMASV;
             
-            private global::System.Data.DataColumn columnTENKH;
-            
-            private global::System.Data.DataColumn columnMACS;
+            private global::System.Data.DataColumn columnHOTEN;
             
             private global::System.Data.DataColumn columnMALOP;
             
-            private global::System.Data.DataColumn columnMAKH;
+            private global::System.Data.DataColumn columnLOP;
+            
+            private global::System.Data.DataColumn columnMAMH;
+            
+            private global::System.Data.DataColumn columnTENMH;
+            
+            private global::System.Data.DataColumn columnLAN;
+            
+            private global::System.Data.DataColumn columnNGAYTHI;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopDataTable() {
-                this.TableName = "V_KhoaAddLop";
+            public SP_XEMLAIBAITHIDataTable() {
+                this.TableName = "SP_XEMLAIBAITHI";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -4460,7 +4466,7 @@ namespace DXApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal V_KhoaAddLopDataTable(global::System.Data.DataTable table) {
+            internal SP_XEMLAIBAITHIDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -4477,32 +4483,24 @@ namespace DXApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected V_KhoaAddLopDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SP_XEMLAIBAITHIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TENLOPColumn {
+            public global::System.Data.DataColumn MASVColumn {
                 get {
-                    return this.columnTENLOP;
+                    return this.columnMASV;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TENKHColumn {
+            public global::System.Data.DataColumn HOTENColumn {
                 get {
-                    return this.columnTENKH;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MACSColumn {
-                get {
-                    return this.columnMACS;
+                    return this.columnHOTEN;
                 }
             }
             
@@ -4516,9 +4514,41 @@ namespace DXApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MAKHColumn {
+            public global::System.Data.DataColumn LOPColumn {
                 get {
-                    return this.columnMAKH;
+                    return this.columnLOP;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MAMHColumn {
+                get {
+                    return this.columnMAMH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TENMHColumn {
+                get {
+                    return this.columnTENMH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LANColumn {
+                get {
+                    return this.columnLAN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NGAYTHIColumn {
+                get {
+                    return this.columnNGAYTHI;
                 }
             }
             
@@ -4533,57 +4563,52 @@ namespace DXApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRow this[int index] {
+            public SP_XEMLAIBAITHIRow this[int index] {
                 get {
-                    return ((V_KhoaAddLopRow)(this.Rows[index]));
+                    return ((SP_XEMLAIBAITHIRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_KhoaAddLopRowChangeEventHandler V_KhoaAddLopRowChanging;
+            public event SP_XEMLAIBAITHIRowChangeEventHandler SP_XEMLAIBAITHIRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_KhoaAddLopRowChangeEventHandler V_KhoaAddLopRowChanged;
+            public event SP_XEMLAIBAITHIRowChangeEventHandler SP_XEMLAIBAITHIRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_KhoaAddLopRowChangeEventHandler V_KhoaAddLopRowDeleting;
+            public event SP_XEMLAIBAITHIRowChangeEventHandler SP_XEMLAIBAITHIRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_KhoaAddLopRowChangeEventHandler V_KhoaAddLopRowDeleted;
+            public event SP_XEMLAIBAITHIRowChangeEventHandler SP_XEMLAIBAITHIRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddV_KhoaAddLopRow(V_KhoaAddLopRow row) {
+            public void AddSP_XEMLAIBAITHIRow(SP_XEMLAIBAITHIRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRow AddV_KhoaAddLopRow(string TENLOP, string TENKH, string MACS, string MALOP, string MAKH) {
-                V_KhoaAddLopRow rowV_KhoaAddLopRow = ((V_KhoaAddLopRow)(this.NewRow()));
+            public SP_XEMLAIBAITHIRow AddSP_XEMLAIBAITHIRow(string MASV, string HOTEN, string MALOP, string LOP, string MAMH, string TENMH, int LAN, System.DateTime NGAYTHI) {
+                SP_XEMLAIBAITHIRow rowSP_XEMLAIBAITHIRow = ((SP_XEMLAIBAITHIRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TENLOP,
-                        TENKH,
-                        MACS,
+                        MASV,
+                        HOTEN,
                         MALOP,
-                        MAKH};
-                rowV_KhoaAddLopRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowV_KhoaAddLopRow);
-                return rowV_KhoaAddLopRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRow FindByMALOPMAKH(string MALOP, string MAKH) {
-                return ((V_KhoaAddLopRow)(this.Rows.Find(new object[] {
-                            MALOP,
-                            MAKH})));
+                        LOP,
+                        MAMH,
+                        TENMH,
+                        LAN,
+                        NGAYTHI};
+                rowSP_XEMLAIBAITHIRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSP_XEMLAIBAITHIRow);
+                return rowSP_XEMLAIBAITHIRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                V_KhoaAddLopDataTable cln = ((V_KhoaAddLopDataTable)(base.Clone()));
+                SP_XEMLAIBAITHIDataTable cln = ((SP_XEMLAIBAITHIDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -4591,71 +4616,80 @@ namespace DXApplication1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new V_KhoaAddLopDataTable();
+                return new SP_XEMLAIBAITHIDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnTENLOP = base.Columns["TENLOP"];
-                this.columnTENKH = base.Columns["TENKH"];
-                this.columnMACS = base.Columns["MACS"];
+                this.columnMASV = base.Columns["MASV"];
+                this.columnHOTEN = base.Columns["HOTEN"];
                 this.columnMALOP = base.Columns["MALOP"];
-                this.columnMAKH = base.Columns["MAKH"];
+                this.columnLOP = base.Columns["LOP"];
+                this.columnMAMH = base.Columns["MAMH"];
+                this.columnTENMH = base.Columns["TENMH"];
+                this.columnLAN = base.Columns["LAN"];
+                this.columnNGAYTHI = base.Columns["NGAYTHI"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnTENLOP = new global::System.Data.DataColumn("TENLOP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTENLOP);
-                this.columnTENKH = new global::System.Data.DataColumn("TENKH", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTENKH);
-                this.columnMACS = new global::System.Data.DataColumn("MACS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMACS);
+                this.columnMASV = new global::System.Data.DataColumn("MASV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMASV);
+                this.columnHOTEN = new global::System.Data.DataColumn("HOTEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHOTEN);
                 this.columnMALOP = new global::System.Data.DataColumn("MALOP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMALOP);
-                this.columnMAKH = new global::System.Data.DataColumn("MAKH", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMAKH);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMALOP,
-                                this.columnMAKH}, true));
-                this.columnTENLOP.AllowDBNull = false;
-                this.columnTENLOP.MaxLength = 50;
-                this.columnTENKH.AllowDBNull = false;
-                this.columnTENKH.MaxLength = 50;
-                this.columnMACS.AllowDBNull = false;
-                this.columnMACS.MaxLength = 3;
+                this.columnLOP = new global::System.Data.DataColumn("LOP", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLOP);
+                this.columnMAMH = new global::System.Data.DataColumn("MAMH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMAMH);
+                this.columnTENMH = new global::System.Data.DataColumn("TENMH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTENMH);
+                this.columnLAN = new global::System.Data.DataColumn("LAN", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLAN);
+                this.columnNGAYTHI = new global::System.Data.DataColumn("NGAYTHI", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNGAYTHI);
+                this.columnMASV.AllowDBNull = false;
+                this.columnMASV.MaxLength = 8;
+                this.columnHOTEN.ReadOnly = true;
+                this.columnHOTEN.MaxLength = 61;
                 this.columnMALOP.AllowDBNull = false;
                 this.columnMALOP.MaxLength = 15;
-                this.columnMAKH.AllowDBNull = false;
-                this.columnMAKH.MaxLength = 8;
+                this.columnLOP.ReadOnly = true;
+                this.columnLOP.MaxLength = 50;
+                this.columnMAMH.AllowDBNull = false;
+                this.columnMAMH.MaxLength = 5;
+                this.columnTENMH.ReadOnly = true;
+                this.columnTENMH.MaxLength = 50;
+                this.columnLAN.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRow NewV_KhoaAddLopRow() {
-                return ((V_KhoaAddLopRow)(this.NewRow()));
+            public SP_XEMLAIBAITHIRow NewSP_XEMLAIBAITHIRow() {
+                return ((SP_XEMLAIBAITHIRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new V_KhoaAddLopRow(builder);
+                return new SP_XEMLAIBAITHIRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(V_KhoaAddLopRow);
+                return typeof(SP_XEMLAIBAITHIRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.V_KhoaAddLopRowChanged != null)) {
-                    this.V_KhoaAddLopRowChanged(this, new V_KhoaAddLopRowChangeEvent(((V_KhoaAddLopRow)(e.Row)), e.Action));
+                if ((this.SP_XEMLAIBAITHIRowChanged != null)) {
+                    this.SP_XEMLAIBAITHIRowChanged(this, new SP_XEMLAIBAITHIRowChangeEvent(((SP_XEMLAIBAITHIRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4663,8 +4697,8 @@ namespace DXApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.V_KhoaAddLopRowChanging != null)) {
-                    this.V_KhoaAddLopRowChanging(this, new V_KhoaAddLopRowChangeEvent(((V_KhoaAddLopRow)(e.Row)), e.Action));
+                if ((this.SP_XEMLAIBAITHIRowChanging != null)) {
+                    this.SP_XEMLAIBAITHIRowChanging(this, new SP_XEMLAIBAITHIRowChangeEvent(((SP_XEMLAIBAITHIRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4672,8 +4706,8 @@ namespace DXApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.V_KhoaAddLopRowDeleted != null)) {
-                    this.V_KhoaAddLopRowDeleted(this, new V_KhoaAddLopRowChangeEvent(((V_KhoaAddLopRow)(e.Row)), e.Action));
+                if ((this.SP_XEMLAIBAITHIRowDeleted != null)) {
+                    this.SP_XEMLAIBAITHIRowDeleted(this, new SP_XEMLAIBAITHIRowChangeEvent(((SP_XEMLAIBAITHIRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4681,14 +4715,14 @@ namespace DXApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.V_KhoaAddLopRowDeleting != null)) {
-                    this.V_KhoaAddLopRowDeleting(this, new V_KhoaAddLopRowChangeEvent(((V_KhoaAddLopRow)(e.Row)), e.Action));
+                if ((this.SP_XEMLAIBAITHIRowDeleting != null)) {
+                    this.SP_XEMLAIBAITHIRowDeleting(this, new SP_XEMLAIBAITHIRowChangeEvent(((SP_XEMLAIBAITHIRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveV_KhoaAddLopRow(V_KhoaAddLopRow row) {
+            public void RemoveSP_XEMLAIBAITHIRow(SP_XEMLAIBAITHIRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -4715,7 +4749,7 @@ namespace DXApplication1 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "V_KhoaAddLopDataTable";
+                attribute2.FixedValue = "SP_XEMLAIBAITHIDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -6543,47 +6577,41 @@ namespace DXApplication1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class V_KhoaAddLopRow : global::System.Data.DataRow {
+        public partial class SP_XEMLAIBAITHIRow : global::System.Data.DataRow {
             
-            private V_KhoaAddLopDataTable tableV_KhoaAddLop;
+            private SP_XEMLAIBAITHIDataTable tableSP_XEMLAIBAITHI;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal V_KhoaAddLopRow(global::System.Data.DataRowBuilder rb) : 
+            internal SP_XEMLAIBAITHIRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableV_KhoaAddLop = ((V_KhoaAddLopDataTable)(this.Table));
+                this.tableSP_XEMLAIBAITHI = ((SP_XEMLAIBAITHIDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string TENLOP {
+            public string MASV {
                 get {
-                    return ((string)(this[this.tableV_KhoaAddLop.TENLOPColumn]));
+                    return ((string)(this[this.tableSP_XEMLAIBAITHI.MASVColumn]));
                 }
                 set {
-                    this[this.tableV_KhoaAddLop.TENLOPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string TENKH {
-                get {
-                    return ((string)(this[this.tableV_KhoaAddLop.TENKHColumn]));
-                }
-                set {
-                    this[this.tableV_KhoaAddLop.TENKHColumn] = value;
+                    this[this.tableSP_XEMLAIBAITHI.MASVColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string MACS {
+            public string HOTEN {
                 get {
-                    return ((string)(this[this.tableV_KhoaAddLop.MACSColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_XEMLAIBAITHI.HOTENColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HOTEN\' in table \'SP_XEMLAIBAITHI\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableV_KhoaAddLop.MACSColumn] = value;
+                    this[this.tableSP_XEMLAIBAITHI.HOTENColumn] = value;
                 }
             }
             
@@ -6591,22 +6619,129 @@ namespace DXApplication1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string MALOP {
                 get {
-                    return ((string)(this[this.tableV_KhoaAddLop.MALOPColumn]));
+                    return ((string)(this[this.tableSP_XEMLAIBAITHI.MALOPColumn]));
                 }
                 set {
-                    this[this.tableV_KhoaAddLop.MALOPColumn] = value;
+                    this[this.tableSP_XEMLAIBAITHI.MALOPColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string MAKH {
+            public string LOP {
                 get {
-                    return ((string)(this[this.tableV_KhoaAddLop.MAKHColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_XEMLAIBAITHI.LOPColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LOP\' in table \'SP_XEMLAIBAITHI\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableV_KhoaAddLop.MAKHColumn] = value;
+                    this[this.tableSP_XEMLAIBAITHI.LOPColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MAMH {
+                get {
+                    return ((string)(this[this.tableSP_XEMLAIBAITHI.MAMHColumn]));
+                }
+                set {
+                    this[this.tableSP_XEMLAIBAITHI.MAMHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TENMH {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_XEMLAIBAITHI.TENMHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENMH\' in table \'SP_XEMLAIBAITHI\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_XEMLAIBAITHI.TENMHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int LAN {
+                get {
+                    return ((int)(this[this.tableSP_XEMLAIBAITHI.LANColumn]));
+                }
+                set {
+                    this[this.tableSP_XEMLAIBAITHI.LANColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime NGAYTHI {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableSP_XEMLAIBAITHI.NGAYTHIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NGAYTHI\' in table \'SP_XEMLAIBAITHI\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_XEMLAIBAITHI.NGAYTHIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsHOTENNull() {
+                return this.IsNull(this.tableSP_XEMLAIBAITHI.HOTENColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetHOTENNull() {
+                this[this.tableSP_XEMLAIBAITHI.HOTENColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsLOPNull() {
+                return this.IsNull(this.tableSP_XEMLAIBAITHI.LOPColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetLOPNull() {
+                this[this.tableSP_XEMLAIBAITHI.LOPColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTENMHNull() {
+                return this.IsNull(this.tableSP_XEMLAIBAITHI.TENMHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTENMHNull() {
+                this[this.tableSP_XEMLAIBAITHI.TENMHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNGAYTHINull() {
+                return this.IsNull(this.tableSP_XEMLAIBAITHI.NGAYTHIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNGAYTHINull() {
+                this[this.tableSP_XEMLAIBAITHI.NGAYTHIColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6988,22 +7123,22 @@ namespace DXApplication1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class V_KhoaAddLopRowChangeEvent : global::System.EventArgs {
+        public class SP_XEMLAIBAITHIRowChangeEvent : global::System.EventArgs {
             
-            private V_KhoaAddLopRow eventRow;
+            private SP_XEMLAIBAITHIRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRowChangeEvent(V_KhoaAddLopRow row, global::System.Data.DataRowAction action) {
+            public SP_XEMLAIBAITHIRowChangeEvent(SP_XEMLAIBAITHIRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_KhoaAddLopRow Row {
+            public SP_XEMLAIBAITHIRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11631,7 +11766,7 @@ SELECT ID_BANGDIEM, CAUHOI, THUTU, VITRI_A, VITRI_B, VITRI_C, VITRI_D, DACHON, r
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class V_KhoaAddLopTableAdapter : global::System.ComponentModel.Component {
+    public partial class SP_XEMLAIBAITHITableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -11645,7 +11780,7 @@ SELECT ID_BANGDIEM, CAUHOI, THUTU, VITRI_A, VITRI_B, VITRI_C, VITRI_D, DACHON, r
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public V_KhoaAddLopTableAdapter() {
+        public SP_XEMLAIBAITHITableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -11742,12 +11877,15 @@ SELECT ID_BANGDIEM, CAUHOI, THUTU, VITRI_A, VITRI_B, VITRI_C, VITRI_D, DACHON, r
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "V_KhoaAddLop";
-            tableMapping.ColumnMappings.Add("TENLOP", "TENLOP");
-            tableMapping.ColumnMappings.Add("TENKH", "TENKH");
-            tableMapping.ColumnMappings.Add("MACS", "MACS");
+            tableMapping.DataSetTable = "SP_XEMLAIBAITHI";
+            tableMapping.ColumnMappings.Add("MASV", "MASV");
+            tableMapping.ColumnMappings.Add("HOTEN", "HOTEN");
             tableMapping.ColumnMappings.Add("MALOP", "MALOP");
-            tableMapping.ColumnMappings.Add("MAKH", "MAKH");
+            tableMapping.ColumnMappings.Add("LOP", "LOP");
+            tableMapping.ColumnMappings.Add("MAMH", "MAMH");
+            tableMapping.ColumnMappings.Add("TENMH", "TENMH");
+            tableMapping.ColumnMappings.Add("LAN", "LAN");
+            tableMapping.ColumnMappings.Add("NGAYTHI", "NGAYTHI");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11764,16 +11902,24 @@ SELECT ID_BANGDIEM, CAUHOI, THUTU, VITRI_A, VITRI_B, VITRI_C, VITRI_D, DACHON, r
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TENLOP, TENKH, MACS, MALOP, MAKH FROM dbo.V_KhoaAddLop";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].CommandText = "dbo.SP_XEMLAIBAITHI";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USERNAME", global::System.Data.SqlDbType.NVarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DS.V_KhoaAddLopDataTable dataTable) {
+        public virtual int Fill(DS.SP_XEMLAIBAITHIDataTable dataTable, string USERNAME) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((USERNAME == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USERNAME));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -11785,9 +11931,15 @@ SELECT ID_BANGDIEM, CAUHOI, THUTU, VITRI_A, VITRI_B, VITRI_C, VITRI_D, DACHON, r
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DS.V_KhoaAddLopDataTable GetData() {
+        public virtual DS.SP_XEMLAIBAITHIDataTable GetData(string USERNAME) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DS.V_KhoaAddLopDataTable dataTable = new DS.V_KhoaAddLopDataTable();
+            if ((USERNAME == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(USERNAME));
+            }
+            DS.SP_XEMLAIBAITHIDataTable dataTable = new DS.SP_XEMLAIBAITHIDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

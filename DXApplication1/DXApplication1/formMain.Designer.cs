@@ -52,6 +52,7 @@ namespace DXApplication1
             this.lableMa = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelTenDN = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelNhom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -68,10 +69,11 @@ namespace DXApplication1
             this.barBtnDangXuat,
             this.btnMH,
             this.btnKhoaLop,
-            this.btnThi});
+            this.btnThi,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 9;
+            this.ribbonControl1.MaxItemId = 10;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribnHeThong,
@@ -170,6 +172,7 @@ namespace DXApplication1
             // 
             // ribbonPageGroup4
             // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
@@ -223,6 +226,15 @@ namespace DXApplication1
             this.labelNhom.Size = new System.Drawing.Size(62, 25);
             this.labelNhom.Text = "Nhóm";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Bài thi";
+            this.barButtonItem1.Id = 9;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -267,6 +279,7 @@ namespace DXApplication1
         private DevExpress.XtraBars.BarButtonItem btnMH;
         private DevExpress.XtraBars.BarButtonItem btnKhoaLop;
         private DevExpress.XtraBars.BarButtonItem btnThi;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 

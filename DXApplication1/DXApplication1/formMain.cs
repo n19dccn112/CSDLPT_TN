@@ -35,8 +35,7 @@ namespace DXApplication1
                 //MessageBox.Show("sinh viên");
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
-                ribnDanhMuc.Visible = true;
-                ribnBaoCao.Visible = false;
+                ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
             }
             else if (Program.mGroup == "GIANGVIEN")
             {
@@ -149,6 +148,18 @@ namespace DXApplication1
             else
             {
                 FormTaoTaiKhoan f = new FormTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+        
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormXtraReportXemLaiBaiThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormXtraReportXemLaiBaiThi f = new FormXtraReportXemLaiBaiThi();
                 f.MdiParent = this;
                 f.Show();
             }
