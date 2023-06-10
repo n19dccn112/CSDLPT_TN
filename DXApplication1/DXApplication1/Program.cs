@@ -14,7 +14,7 @@ namespace DXApplication1
         /// </summary>
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
-        public static String connstrPublisher = "Data Source=LAPTOP-ELTC2AKL;Initial Catalog=TN_CSDLPT;Integrated Security=True";
+        public static String connstrPublisher = "Data Source=DESKTOP-C0549K9;Initial Catalog=TN_CSDLPT;Integrated Security=True";
 
         public static SqlDataReader myReader;
         public static String servername = "";
@@ -25,7 +25,7 @@ namespace DXApplication1
 
         public static String database = "TN_CSDLPT";
         public static String remoteLogin = "HTKN";
-        public static String remotePassword = "N19dccn112";
+        public static String remotePassword = "123";
         public static String loginDN = "";
         public static String passwordDN = "";
         public static String mGroup = "";
@@ -169,6 +169,17 @@ namespace DXApplication1
                 MessageBox.Show(ex.Message + strlenh);
                 conn.Close();
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
+            }
+        }
+        public static object ExecSqlScalar(string query)
+        {
+            using (SqlConnection connection = new SqlConnection(Program.connstr))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                object result = command.ExecuteScalar();
+                return result;
             }
         }
         [STAThread]

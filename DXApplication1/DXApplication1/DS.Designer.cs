@@ -7693,7 +7693,9 @@ SELECT MAMH, MASV, LAN, NGAYTHI, DIEM, ID FROM BANGDIEM WHERE (LAN = @LAN) AND (
                 this._clearBeforeFill = value;
             }
         }
+
         
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {

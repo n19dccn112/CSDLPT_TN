@@ -38,6 +38,11 @@ namespace DXApplication1
             this.btnMH = new DevExpress.XtraBars.BarButtonItem();
             this.btnKhoaLop = new DevExpress.XtraBars.BarButtonItem();
             this.btnThi = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSinhVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGiaoVien = new DevExpress.XtraBars.BarButtonItem();
+            this.btnNhapDe = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDangKiThi = new DevExpress.XtraBars.BarButtonItem();
             this.ribnHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribnHeThongCon = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribnDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -52,7 +57,6 @@ namespace DXApplication1
             this.lableMa = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelTenDN = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelNhom = new System.Windows.Forms.ToolStripStatusLabel();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -70,16 +74,20 @@ namespace DXApplication1
             this.btnMH,
             this.btnKhoaLop,
             this.btnThi,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.btnSinhVien,
+            this.btnGiaoVien,
+            this.btnNhapDe,
+            this.btnDangKiThi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 10;
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(22);
+            this.ribbonControl1.MaxItemId = 14;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribnHeThong,
             this.ribnDanhMuc,
             this.ribnBaoCao});
-            this.ribbonControl1.Size = new System.Drawing.Size(1137, 231);
+            this.ribbonControl1.Size = new System.Drawing.Size(1516, 308);
             // 
             // barBtnDangNhap
             // 
@@ -135,6 +143,51 @@ namespace DXApplication1
             this.btnThi.Name = "btnThi";
             this.btnThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThi_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Bài thi";
+            this.barButtonItem1.Id = 9;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // btnSinhVien
+            // 
+            this.btnSinhVien.Caption = "Sinh Viên";
+            this.btnSinhVien.Id = 10;
+            this.btnSinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSinhVien.ImageOptions.Image")));
+            this.btnSinhVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSinhVien.ImageOptions.LargeImage")));
+            this.btnSinhVien.Name = "btnSinhVien";
+            this.btnSinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSinhVien_ItemClick);
+            // 
+            // btnGiaoVien
+            // 
+            this.btnGiaoVien.Caption = "Giáo Viên";
+            this.btnGiaoVien.Id = 11;
+            this.btnGiaoVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGiaoVien.ImageOptions.Image")));
+            this.btnGiaoVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGiaoVien.ImageOptions.LargeImage")));
+            this.btnGiaoVien.Name = "btnGiaoVien";
+            this.btnGiaoVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiaoVien_ItemClick);
+            // 
+            // btnNhapDe
+            // 
+            this.btnNhapDe.Caption = "Nhập Đề";
+            this.btnNhapDe.Id = 12;
+            this.btnNhapDe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapDe.ImageOptions.Image")));
+            this.btnNhapDe.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNhapDe.ImageOptions.LargeImage")));
+            this.btnNhapDe.Name = "btnNhapDe";
+            this.btnNhapDe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhapDe_ItemClick);
+            // 
+            // btnDangKiThi
+            // 
+            this.btnDangKiThi.Caption = "Đăng Kí Thi";
+            this.btnDangKiThi.Id = 13;
+            this.btnDangKiThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKiThi.ImageOptions.Image")));
+            this.btnDangKiThi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDangKiThi.ImageOptions.LargeImage")));
+            this.btnDangKiThi.Name = "btnDangKiThi";
+            this.btnDangKiThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKiThi_ItemClick);
+            // 
             // ribnHeThong
             // 
             this.ribnHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -161,6 +214,10 @@ namespace DXApplication1
             this.ribbonPageGroup2.ItemLinks.Add(this.btnMH, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnKhoaLop);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnThi);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnSinhVien);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnGiaoVien);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnNhapDe);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnDangKiThi);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // ribnBaoCao
@@ -202,48 +259,40 @@ namespace DXApplication1
             this.lableMa,
             this.labelTenDN,
             this.labelNhom});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 494);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1137, 32);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1516, 42);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lableMa
             // 
             this.lableMa.Name = "lableMa";
-            this.lableMa.Size = new System.Drawing.Size(95, 25);
+            this.lableMa.Size = new System.Drawing.Size(126, 32);
             this.lableMa.Text = "Mã GV/HS";
             // 
             // labelTenDN
             // 
             this.labelTenDN.Name = "labelTenDN";
-            this.labelTenDN.Size = new System.Drawing.Size(129, 25);
+            this.labelTenDN.Size = new System.Drawing.Size(175, 32);
             this.labelTenDN.Text = "Tên đăng nhập";
             // 
             // labelNhom
             // 
             this.labelNhom.Name = "labelNhom";
-            this.labelNhom.Size = new System.Drawing.Size(62, 25);
+            this.labelNhom.Size = new System.Drawing.Size(82, 32);
             this.labelNhom.Text = "Nhóm";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Bài thi";
-            this.barButtonItem1.Id = 9;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // formMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1137, 526);
+            this.ClientSize = new System.Drawing.Size(1516, 692);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "formMain";
             this.Ribbon = this.ribbonControl1;
             this.Text = "TRẮC NGHIỆM";
@@ -280,6 +329,10 @@ namespace DXApplication1
         private DevExpress.XtraBars.BarButtonItem btnKhoaLop;
         private DevExpress.XtraBars.BarButtonItem btnThi;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnSinhVien;
+        private DevExpress.XtraBars.BarButtonItem btnGiaoVien;
+        private DevExpress.XtraBars.BarButtonItem btnNhapDe;
+        private DevExpress.XtraBars.BarButtonItem btnDangKiThi;
     }
 }
 

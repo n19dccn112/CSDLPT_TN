@@ -14,7 +14,7 @@ namespace DXApplication1
         public formMain()
         {
             InitializeComponent();
-            btnMH.Enabled = btnKhoaLop.Enabled = false;
+            btnMH.Enabled = btnKhoaLop.Enabled = btnDangKiThi.Enabled = btnThi.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnNhapDe.Enabled = false;
             barBtnTaoTaiKhoan.Enabled = barBtnDangXuat.Enabled = false;
         }
         public void hienThiMenu()
@@ -36,6 +36,8 @@ namespace DXApplication1
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
+                btnMH.Enabled = btnKhoaLop.Enabled =  btnSinhVien.Enabled = btnGiaoVien.Enabled = btnDangKiThi.Enabled = btnNhapDe.Enabled = false;
+                btnThi.Enabled = true;
             }
             else if (Program.mGroup == "GIANGVIEN")
             {
@@ -43,6 +45,9 @@ namespace DXApplication1
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
                 btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnDangKiThi.Enabled =  false;
+                btnThi.Enabled = btnNhapDe.Enabled =  true;
+
             }
             else if (Program.mGroup == "TRUONG")
             {
@@ -56,7 +61,7 @@ namespace DXApplication1
                 barBtnDangNhap.Enabled = false;
                 barBtnDangXuat.Enabled = barBtnTaoTaiKhoan.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnNhapDe.Enabled = btnDangKiThi.Enabled = true;
             }
         }
 
@@ -160,6 +165,56 @@ namespace DXApplication1
             else
             {
                 FormXtraReportXemLaiBaiThi f = new FormXtraReportXemLaiBaiThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnSinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormSinhVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormSinhVien f = new FormSinhVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+
+        }
+
+        private void btnGiaoVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormGiaoVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormGiaoVien f = new FormGiaoVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnNhapDe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormNhapDe));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormNhapDe f = new FormNhapDe();
+                f.MdiParent = this;
+                f.Show();
+            }
+
+        }
+
+        private void btnDangKiThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormDangKiThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormDangKiThi f = new FormDangKiThi();
                 f.MdiParent = this;
                 f.Show();
             }
