@@ -125,72 +125,72 @@ namespace DXApplication1
             tENLabel.AutoSize = true;
             tENLabel.Location = new System.Drawing.Point(96, 144);
             tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(60, 25);
+            tENLabel.Size = new System.Drawing.Size(55, 25);
             tENLabel.TabIndex = 0;
-            tENLabel.Text = "TEN:";
+            tENLabel.Text = "Tên:";
             // 
             // hOLabel
             // 
             hOLabel.AutoSize = true;
             hOLabel.Location = new System.Drawing.Point(107, 94);
             hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(49, 25);
+            hOLabel.Size = new System.Drawing.Size(45, 25);
             hOLabel.TabIndex = 2;
-            hOLabel.Text = "HO:";
+            hOLabel.Text = "Họ:";
             // 
             // mASVLabel
             // 
             mASVLabel.AutoSize = true;
-            mASVLabel.Location = new System.Drawing.Point(78, 48);
+            mASVLabel.Location = new System.Drawing.Point(13, 51);
             mASVLabel.Name = "mASVLabel";
-            mASVLabel.Size = new System.Drawing.Size(78, 25);
+            mASVLabel.Size = new System.Drawing.Size(140, 25);
             mASVLabel.TabIndex = 6;
-            mASVLabel.Text = "MASV:";
+            mASVLabel.Text = "Mã sinh viên:";
             // 
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
             dIACHILabel.Location = new System.Drawing.Point(69, 239);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(87, 25);
+            dIACHILabel.Size = new System.Drawing.Size(84, 25);
             dIACHILabel.TabIndex = 8;
-            dIACHILabel.Text = "DIACHI:";
+            dIACHILabel.Text = "Địa chỉ:";
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(64, 328);
+            mALOPLabel.Location = new System.Drawing.Point(68, 331);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(92, 25);
+            mALOPLabel.Size = new System.Drawing.Size(83, 25);
             mALOPLabel.TabIndex = 10;
-            mALOPLabel.Text = "MALOP:";
+            mALOPLabel.Text = "Mã lớp:";
             // 
             // mATKHAULabel
             // 
             mATKHAULabel.AutoSize = true;
-            mATKHAULabel.Location = new System.Drawing.Point(35, 282);
+            mATKHAULabel.Location = new System.Drawing.Point(44, 285);
             mATKHAULabel.Name = "mATKHAULabel";
-            mATKHAULabel.Size = new System.Drawing.Size(121, 25);
+            mATKHAULabel.Size = new System.Drawing.Size(107, 25);
             mATKHAULabel.TabIndex = 11;
-            mATKHAULabel.Text = "MATKHAU:";
+            mATKHAULabel.Text = "Mật khẩu:";
             // 
             // nGAYSINHLabel
             // 
             nGAYSINHLabel.AutoSize = true;
-            nGAYSINHLabel.Location = new System.Drawing.Point(29, 190);
+            nGAYSINHLabel.Location = new System.Drawing.Point(39, 193);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
-            nGAYSINHLabel.Size = new System.Drawing.Size(127, 25);
+            nGAYSINHLabel.Size = new System.Drawing.Size(114, 25);
             nGAYSINHLabel.TabIndex = 12;
-            nGAYSINHLabel.Text = "NGAYSINH:";
+            nGAYSINHLabel.Text = "Ngày sinh:";
             // 
             // tENCSLabel
             // 
             tENCSLabel.AutoSize = true;
-            tENCSLabel.Location = new System.Drawing.Point(830, 34);
+            tENCSLabel.Location = new System.Drawing.Point(128, 25);
             tENCSLabel.Name = "tENCSLabel";
-            tENCSLabel.Size = new System.Drawing.Size(89, 25);
+            tENCSLabel.Size = new System.Drawing.Size(119, 25);
             tENCSLabel.TabIndex = 0;
-            tENCSLabel.Text = "TENCS:";
+            tENCSLabel.Text = "Tên cơ sở: ";
             // 
             // barManager1
             // 
@@ -342,15 +342,15 @@ namespace DXApplication1
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1744, 67);
+            this.barDockControlTop.Size = new System.Drawing.Size(1831, 67);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 844);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 934);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1744, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1831, 22);
             // 
             // barDockControlLeft
             // 
@@ -358,15 +358,15 @@ namespace DXApplication1
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 67);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 777);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 867);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1744, 67);
+            this.barDockControlRight.Location = new System.Drawing.Point(1831, 67);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 777);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 867);
             // 
             // dS
             // 
@@ -404,14 +404,14 @@ namespace DXApplication1
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 67);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1744, 76);
+            this.panel2.Size = new System.Drawing.Size(1831, 76);
             this.panel2.TabIndex = 14;
             // 
             // cmbCoSo
             // 
             this.cmbCoSo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsCoSo, "TENCS", true));
             this.cmbCoSo.FormattingEnabled = true;
-            this.cmbCoSo.Location = new System.Drawing.Point(925, 31);
+            this.cmbCoSo.Location = new System.Drawing.Point(253, 22);
             this.cmbCoSo.Name = "cmbCoSo";
             this.cmbCoSo.Size = new System.Drawing.Size(450, 33);
             this.cmbCoSo.TabIndex = 1;
@@ -430,7 +430,7 @@ namespace DXApplication1
             this.gcLop.MainView = this.gridView1;
             this.gcLop.MenuManager = this.barManager1;
             this.gcLop.Name = "gcLop";
-            this.gcLop.Size = new System.Drawing.Size(1744, 301);
+            this.gcLop.Size = new System.Drawing.Size(1831, 378);
             this.gcLop.TabIndex = 14;
             this.gcLop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -489,9 +489,9 @@ namespace DXApplication1
             this.pnSV.Controls.Add(tENLabel);
             this.pnSV.Controls.Add(this.edtTen);
             this.pnSV.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnSV.Location = new System.Drawing.Point(0, 444);
+            this.pnSV.Location = new System.Drawing.Point(0, 521);
             this.pnSV.Name = "pnSV";
-            this.pnSV.Size = new System.Drawing.Size(614, 400);
+            this.pnSV.Size = new System.Drawing.Size(614, 413);
             this.pnSV.TabIndex = 24;
             // 
             // dtNgaySinh
@@ -572,11 +572,11 @@ namespace DXApplication1
             // 
             this.gcSV.DataSource = this.bdsSV;
             this.gcSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcSV.Location = new System.Drawing.Point(614, 444);
+            this.gcSV.Location = new System.Drawing.Point(614, 521);
             this.gcSV.MainView = this.gridView2;
             this.gcSV.MenuManager = this.barManager1;
             this.gcSV.Name = "gcSV";
-            this.gcSV.Size = new System.Drawing.Size(1130, 400);
+            this.gcSV.Size = new System.Drawing.Size(1217, 413);
             this.gcSV.TabIndex = 28;
             this.gcSV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -674,7 +674,7 @@ namespace DXApplication1
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1744, 866);
+            this.ClientSize = new System.Drawing.Size(1831, 956);
             this.Controls.Add(this.gcSV);
             this.Controls.Add(this.pnSV);
             this.Controls.Add(this.gcLop);

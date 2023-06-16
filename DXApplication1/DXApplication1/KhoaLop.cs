@@ -54,6 +54,7 @@ namespace DXApplication1
                         menuItermXoa.Enabled = menuItermSua.Enabled = true;
                 }
             }
+           
             cmbTenKhoa.Visible = panelEdt.Enabled = edtKHOA_LOP.Visible = false;
             gcKhoa.Enabled = gcLop.Enabled = btnThoat.Enabled = true;
         }

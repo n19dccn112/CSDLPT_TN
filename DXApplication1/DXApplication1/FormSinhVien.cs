@@ -14,7 +14,6 @@ namespace DXApplication1
     {
         private int vitri;
         bool themSV = false;
-        bool suaSV = false;
         public FormSinhVien()
         {
             InitializeComponent();
@@ -24,37 +23,28 @@ namespace DXApplication1
             if (Program.mGroup == "TRUONG")
             {
                 cmbCoSo.Enabled = true;
-                btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnGhi.Enabled = btnPhucHoi.Enabled = btnHuy.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnGhi.Enabled = btnPhucHoi.Enabled = btnHuy.Enabled = btnHoanTac.Enabled = false;
                 pnSV.Enabled = false;
                 gcSV.Enabled = gcLop.Enabled = true;
             }
-            else
-           if (Program.mGroup == "GIANGVIEN")
+            else//CS - gv,sv  vào đc form naỳ
             {
-
                 cmbCoSo.Enabled = false;
-                btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnGhi.Enabled = btnPhucHoi.Enabled = false;
-
-                btnHuy.Enabled = false;
-                pnSV.Enabled = false;
-                gcSV.Enabled = gcLop.Enabled = true;
-            }
-            else//CS
-            {
-                //cmbCoSo.Enabled = false;
                 btnReload.Enabled = btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = true;
-                btnPhucHoi.Enabled = btnGhi.Enabled = btnHuy.Enabled = false;
+                btnPhucHoi.Enabled = btnGhi.Enabled = btnHuy.Enabled = btnHoanTac.Enabled = false;
                 pnSV.Enabled = false;
                 gcSV.Enabled = gcLop.Enabled = true;
                 cmbCoSo.Enabled = false;
                 //if (bdsSV.Count == 0) btnXoa.Enabled = btnSua.Enabled = false;
             }
+            if (bdsSV.Count == 0)
+            {
+                btnXoa.Enabled = false;
+                btnSua.Enabled = false;
+            }
         }
         private void FormSinhVien_Load(object sender, EventArgs e)
         {
-
-
-
             dS.EnforceConstraints = false;
 
 
@@ -69,7 +59,7 @@ namespace DXApplication1
             PhanQuyen();
 
             themSV = false;
-            suaSV = false;
+        
 
             cmbCoSo.DataSource = Program.bds_dspm;
             cmbCoSo.DisplayMember = "TENCS";
@@ -83,19 +73,18 @@ namespace DXApplication1
         {
             vitri = bdsSV.Position;
             bdsSV.AddNew();
-            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnThoat.Enabled = btnReload.Enabled = false;
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnThoat.Enabled =  edtMaSV.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
             pnSV.Enabled = true;
             gcSV.Enabled = gcLop.Enabled = false;
-            edtDiaChi.Enabled = edtHo.Enabled = edtTen.Enabled = dtNgaySinh.Enabled = edtMaSV.Enabled = edtMatKhau.Enabled = true;
+            edtDiaChi.Enabled = edtHo.Enabled = edtTen.Enabled = dtNgaySinh.Enabled =edtMatKhau.Enabled = true;
             edtMaLop.Text = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
-            edtMaLop.Enabled = false;
+            edtMaLop.Enabled = edtMaSV.Enabled = false;
             themSV = true;
-            suaSV = false;
+         
 
             //lấy mã sinh viên tăng tự động
-            string query = "SELECT MAX(MASV) FROM SINHVIEN";
-            string maxMaSV = Program.ExecSqlScalar(query) as string;
+            string maxMaSV = Program.ExecSqlScalar("EXEC [dbo].[SP_LayMAXmaSV]") as string;
 
             // Tạo mã sinh viên mới
             string newMaSV = "";
@@ -124,7 +113,7 @@ namespace DXApplication1
             btnGhi.Enabled = btnHuy.Enabled = true;
             edtMaSV.Enabled = edtMatKhau.Enabled = false;
             themSV = false;
-            suaSV = true;
+          
             cmbCoSo.Enabled = false;
         }
 
@@ -168,6 +157,8 @@ namespace DXApplication1
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
+            
             if (MessageBox.Show("Bạn thật sự muốn thoát khỏi form?", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Close();
@@ -176,11 +167,13 @@ namespace DXApplication1
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bdsBangDiem.Count > 0)
-            {
-                MessageBox.Show("Sinh viên " + edtHo.Text + " " + edtTen.Text + " đang có điểm không thể xóa!", "", MessageBoxButtons.OK);
-                return;
-            }
+            string masv =((DataRowView)bdsSV[bdsSV.Position])["MASV"].ToString();
+            if (Program.ExecSqlNonQuery("exec [dbo].[SP_XoaSV_checkBangDiem] '" + masv + "'") == 1) return;
+            //if (bdsBangDiem.Count > 0)
+            //{
+            //    MessageBox.Show("Sinh viên " + edtHo.Text + " " + edtTen.Text + " đang có điểm không thể xóa!", "", MessageBoxButtons.OK);
+            //    return;
+            //}
             if (MessageBox.Show("Bạn có muốn xóa Sinh viên: " + edtHo.Text + " " + edtTen.Text + " ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
@@ -299,6 +292,7 @@ namespace DXApplication1
             {
                 return;
             }
+
             if (cmbCoSo.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
             Program.servername = cmbCoSo.SelectedValue.ToString();
@@ -307,16 +301,19 @@ namespace DXApplication1
             {
                 Program.mlogin = Program.remoteLogin;
                 Program.password = Program.remotePassword;
+                //MessageBox.Show("Lỗi kết nối về cơ sở mới!: mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.password + ", mCoSo: " + Program.mCoso + ", mLogin: " + Program.mlogin);
             }
             else
             {
                 Program.mlogin = Program.loginDN;
                 Program.password = Program.passwordDN;
+                //Program.mlogin = Program.remoteLogin;
+                //Program.password = Program.remotePassword;
             }
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối về phòng ban mới!");
-            }
+
+            if (Program.dangXuat == false && Program.KetNoi() == 0)
+                MessageBox.Show("Lỗi kết nối về cơ sở mới!: mlogin: " + cmbCoSo.SelectedIndex + ", pass: " + Program.password + ", mCoSo: " + Program.mCoso);
+
             else
             {
                 dS.EnforceConstraints = false;

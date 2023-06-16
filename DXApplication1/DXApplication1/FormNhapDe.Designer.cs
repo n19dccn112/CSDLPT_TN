@@ -128,38 +128,38 @@ namespace DXApplication1
             // cAUHOILabel
             // 
             cAUHOILabel.AutoSize = true;
-            cAUHOILabel.Location = new System.Drawing.Point(101, 32);
+            cAUHOILabel.Location = new System.Drawing.Point(101, 35);
             cAUHOILabel.Name = "cAUHOILabel";
-            cAUHOILabel.Size = new System.Drawing.Size(98, 25);
+            cAUHOILabel.Size = new System.Drawing.Size(92, 25);
             cAUHOILabel.TabIndex = 0;
-            cAUHOILabel.Text = "CAUHOI:";
+            cAUHOILabel.Text = "Câu hỏi:";
             // 
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(106, 163);
+            tENMHLabel.Location = new System.Drawing.Point(50, 163);
             tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(93, 25);
+            tENMHLabel.Size = new System.Drawing.Size(143, 25);
             tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "TENMH:";
+            tENMHLabel.Text = "Tên môn học:";
             // 
             // tRINHDOLabel
             // 
             tRINHDOLabel.AutoSize = true;
-            tRINHDOLabel.Location = new System.Drawing.Point(87, 227);
+            tRINHDOLabel.Location = new System.Drawing.Point(96, 227);
             tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(112, 25);
+            tRINHDOLabel.Size = new System.Drawing.Size(97, 25);
             tRINHDOLabel.TabIndex = 6;
-            tRINHDOLabel.Text = "TRINHDO:";
+            tRINHDOLabel.Text = "Trình độ:";
             // 
             // nOIDUNGLabel
             // 
             nOIDUNGLabel.AutoSize = true;
             nOIDUNGLabel.Location = new System.Drawing.Point(690, 32);
             nOIDUNGLabel.Name = "nOIDUNGLabel";
-            nOIDUNGLabel.Size = new System.Drawing.Size(115, 25);
+            nOIDUNGLabel.Size = new System.Drawing.Size(104, 25);
             nOIDUNGLabel.TabIndex = 8;
-            nOIDUNGLabel.Text = "NOIDUNG:";
+            nOIDUNGLabel.Text = "Nội dung:";
             // 
             // aLabel
             // 
@@ -202,36 +202,36 @@ namespace DXApplication1
             dAP_ANLabel.AutoSize = true;
             dAP_ANLabel.Location = new System.Drawing.Point(709, 317);
             dAP_ANLabel.Name = "dAP_ANLabel";
-            dAP_ANLabel.Size = new System.Drawing.Size(96, 25);
+            dAP_ANLabel.Size = new System.Drawing.Size(87, 25);
             dAP_ANLabel.TabIndex = 18;
-            dAP_ANLabel.Text = "DAP AN:";
+            dAP_ANLabel.Text = "Đáp án:";
             // 
             // mAGVLabel
             // 
             mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(119, 289);
+            mAGVLabel.Location = new System.Drawing.Point(52, 289);
             mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(80, 25);
+            mAGVLabel.Size = new System.Drawing.Size(141, 25);
             mAGVLabel.TabIndex = 20;
-            mAGVLabel.Text = "MAGV:";
+            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(106, 340);
+            label1.Location = new System.Drawing.Point(45, 337);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(79, 25);
+            label1.Size = new System.Drawing.Size(148, 25);
             label1.TabIndex = 23;
-            label1.Text = "TenGV";
+            label1.Text = "Tên giáo viên:";
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(116, 101);
+            mAMHLabel.Location = new System.Drawing.Point(57, 106);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(83, 25);
+            mAMHLabel.Size = new System.Drawing.Size(136, 25);
             mAMHLabel.TabIndex = 23;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Mã môn học:";
             // 
             // barManager1
             // 
@@ -442,11 +442,13 @@ namespace DXApplication1
             // 
             this.gcBoDe.DataSource = this.bdsBoDe;
             this.gcBoDe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcBoDe.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
             this.gcBoDe.Location = new System.Drawing.Point(0, 67);
             this.gcBoDe.MainView = this.gridView1;
+            this.gcBoDe.Margin = new System.Windows.Forms.Padding(6);
             this.gcBoDe.MenuManager = this.barManager1;
             this.gcBoDe.Name = "gcBoDe";
-            this.gcBoDe.Size = new System.Drawing.Size(1798, 432);
+            this.gcBoDe.Size = new System.Drawing.Size(1798, 430);
             this.gcBoDe.TabIndex = 5;
             this.gcBoDe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -465,98 +467,100 @@ namespace DXApplication1
             this.colD,
             this.colDAP_AN,
             this.colMAGV});
+            this.gridView1.DetailHeight = 700;
+            this.gridView1.FixedLineWidth = 4;
             this.gridView1.GridControl = this.gcBoDe;
             this.gridView1.Name = "gridView1";
             // 
             // colCAUHOI
             // 
             this.colCAUHOI.FieldName = "CAUHOI";
-            this.colCAUHOI.MinWidth = 40;
+            this.colCAUHOI.MinWidth = 80;
             this.colCAUHOI.Name = "colCAUHOI";
             this.colCAUHOI.Visible = true;
             this.colCAUHOI.VisibleIndex = 0;
-            this.colCAUHOI.Width = 150;
+            this.colCAUHOI.Width = 300;
             // 
             // colMAMH
             // 
             this.colMAMH.FieldName = "MAMH";
-            this.colMAMH.MinWidth = 40;
+            this.colMAMH.MinWidth = 80;
             this.colMAMH.Name = "colMAMH";
             this.colMAMH.Visible = true;
             this.colMAMH.VisibleIndex = 1;
-            this.colMAMH.Width = 150;
+            this.colMAMH.Width = 300;
             // 
             // colTRINHDO
             // 
             this.colTRINHDO.FieldName = "TRINHDO";
-            this.colTRINHDO.MinWidth = 40;
+            this.colTRINHDO.MinWidth = 80;
             this.colTRINHDO.Name = "colTRINHDO";
             this.colTRINHDO.Visible = true;
             this.colTRINHDO.VisibleIndex = 2;
-            this.colTRINHDO.Width = 150;
+            this.colTRINHDO.Width = 300;
             // 
             // colNOIDUNG
             // 
             this.colNOIDUNG.FieldName = "NOIDUNG";
-            this.colNOIDUNG.MinWidth = 40;
+            this.colNOIDUNG.MinWidth = 80;
             this.colNOIDUNG.Name = "colNOIDUNG";
             this.colNOIDUNG.Visible = true;
             this.colNOIDUNG.VisibleIndex = 3;
-            this.colNOIDUNG.Width = 150;
+            this.colNOIDUNG.Width = 300;
             // 
             // colA
             // 
             this.colA.FieldName = "A";
-            this.colA.MinWidth = 40;
+            this.colA.MinWidth = 80;
             this.colA.Name = "colA";
             this.colA.Visible = true;
             this.colA.VisibleIndex = 4;
-            this.colA.Width = 150;
+            this.colA.Width = 300;
             // 
             // colB
             // 
             this.colB.FieldName = "B";
-            this.colB.MinWidth = 40;
+            this.colB.MinWidth = 80;
             this.colB.Name = "colB";
             this.colB.Visible = true;
             this.colB.VisibleIndex = 5;
-            this.colB.Width = 150;
+            this.colB.Width = 300;
             // 
             // colC
             // 
             this.colC.FieldName = "C";
-            this.colC.MinWidth = 40;
+            this.colC.MinWidth = 80;
             this.colC.Name = "colC";
             this.colC.Visible = true;
             this.colC.VisibleIndex = 6;
-            this.colC.Width = 150;
+            this.colC.Width = 300;
             // 
             // colD
             // 
             this.colD.FieldName = "D";
-            this.colD.MinWidth = 40;
+            this.colD.MinWidth = 80;
             this.colD.Name = "colD";
             this.colD.Visible = true;
             this.colD.VisibleIndex = 7;
-            this.colD.Width = 150;
+            this.colD.Width = 300;
             // 
             // colDAP_AN
             // 
             this.colDAP_AN.FieldName = "DAP_AN";
-            this.colDAP_AN.MinWidth = 40;
+            this.colDAP_AN.MinWidth = 80;
             this.colDAP_AN.Name = "colDAP_AN";
             this.colDAP_AN.Visible = true;
             this.colDAP_AN.VisibleIndex = 8;
-            this.colDAP_AN.Width = 150;
+            this.colDAP_AN.Width = 300;
             // 
             // colMAGV
             // 
             this.colMAGV.FieldName = "MAGV";
-            this.colMAGV.MinWidth = 40;
+            this.colMAGV.MinWidth = 80;
             this.colMAGV.Name = "colMAGV";
             this.colMAGV.Visible = true;
             this.colMAGV.VisibleIndex = 9;
-            this.colMAGV.Width = 150;
+            this.colMAGV.Width = 300;
             // 
             // pnNhapDe
             // 
@@ -585,9 +589,9 @@ namespace DXApplication1
             this.pnNhapDe.Controls.Add(cAUHOILabel);
             this.pnNhapDe.Controls.Add(this.edtCauHoi);
             this.pnNhapDe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnNhapDe.Location = new System.Drawing.Point(0, 499);
+            this.pnNhapDe.Location = new System.Drawing.Point(0, 497);
             this.pnNhapDe.Name = "pnNhapDe";
-            this.pnNhapDe.Size = new System.Drawing.Size(1798, 436);
+            this.pnNhapDe.Size = new System.Drawing.Size(1798, 438);
             this.pnNhapDe.TabIndex = 11;
             // 
             // tbMaGV

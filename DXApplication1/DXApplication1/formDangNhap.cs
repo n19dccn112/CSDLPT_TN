@@ -12,7 +12,7 @@ namespace DXApplication1
 
         private SqlConnection conn_publisher = new SqlConnection();
         private const String accountStudent = "SV";
-        private const String passwordStudent = "N19dccn112";
+        private const String passwordStudent = "123";
 
         public formDangNhap()
         {
@@ -62,7 +62,6 @@ namespace DXApplication1
                 if (Program.KetNoi() == 0) return;
 
                 Program.mCoso = cmbCoSo.SelectedIndex;
-
                 try
                 {
                     Program.loginDN = txtTK.Text.ToString();
@@ -100,8 +99,12 @@ namespace DXApplication1
                 Program.mCoso = cmbCoSo.SelectedIndex;
 
                 string strLenh = "EXEC SP_DANGNHAP_GV'" + Program.mlogin + "'";
+
+                Program.loginDN = txtTK.Text.ToString();
+                Program.passwordDN = txtMK.Text.ToString();
                 try
                 {
+                    
                     Program.myReader = Program.ExecSqlDataReader(strLenh);
                     if (Program.myReader == null) return;
                     Program.myReader.Read();
@@ -127,6 +130,7 @@ namespace DXApplication1
             }
             Program.frmChinh.hienThiMenu();
             this.Visible = false;
+            
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

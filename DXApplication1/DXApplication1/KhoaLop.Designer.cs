@@ -272,7 +272,7 @@ namespace DXApplication1
             // 
             // btnHoanTac
             // 
-            this.btnHoanTac.Caption = "hoàn tác";
+            this.btnHoanTac.Caption = "Hoàn tác";
             this.btnHoanTac.Id = 5;
             this.btnHoanTac.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHoanTac.ImageOptions.Image")));
             this.btnHoanTac.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHoanTac.ImageOptions.LargeImage")));
@@ -451,6 +451,7 @@ namespace DXApplication1
             // 
             // mSLop
             // 
+            this.mSLop.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.mSLop.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mSLop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuLop});

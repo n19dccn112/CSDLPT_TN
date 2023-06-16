@@ -586,7 +586,7 @@ namespace DXApplication1
             this.pnGVDK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnGVDK.Location = new System.Drawing.Point(0, 461);
             this.pnGVDK.Name = "pnGVDK";
-            this.pnGVDK.Size = new System.Drawing.Size(815, 502);
+            this.pnGVDK.Size = new System.Drawing.Size(812, 502);
             this.pnGVDK.TabIndex = 16;
             // 
             // cmbThoiGian
@@ -624,7 +624,6 @@ namespace DXApplication1
             this.cmbTenMH.Name = "cmbTenMH";
             this.cmbTenMH.Size = new System.Drawing.Size(368, 33);
             this.cmbTenMH.TabIndex = 19;
-            //this.cmbTenMH.SelectedIndexChanged += new System.EventHandler(this.cmbTenMH_SelectedIndexChanged);
             // 
             // cmbTenGV
             // 
@@ -690,6 +689,7 @@ namespace DXApplication1
             this.edtMaGV.Name = "edtMaGV";
             this.edtMaGV.Size = new System.Drawing.Size(147, 40);
             this.edtMaGV.TabIndex = 6;
+            this.edtMaGV.EditValueChanged += new System.EventHandler(this.edtMaGV_EditValueChanged);
             // 
             // cmbTrinhDo
             // 
@@ -711,90 +711,94 @@ namespace DXApplication1
             this.colLAN,
             this.colSOCAUTHI,
             this.colTHOIGIAN});
+            this.gridView3.DetailHeight = 700;
+            this.gridView3.FixedLineWidth = 4;
             this.gridView3.GridControl = this.gcGVDK;
             this.gridView3.Name = "gridView3";
             // 
             // colMAGV
             // 
             this.colMAGV.FieldName = "MAGV";
-            this.colMAGV.MinWidth = 40;
+            this.colMAGV.MinWidth = 80;
             this.colMAGV.Name = "colMAGV";
             this.colMAGV.Visible = true;
             this.colMAGV.VisibleIndex = 0;
-            this.colMAGV.Width = 150;
+            this.colMAGV.Width = 300;
             // 
             // colMAMH1
             // 
             this.colMAMH1.FieldName = "MAMH";
-            this.colMAMH1.MinWidth = 40;
+            this.colMAMH1.MinWidth = 80;
             this.colMAMH1.Name = "colMAMH1";
             this.colMAMH1.Visible = true;
             this.colMAMH1.VisibleIndex = 1;
-            this.colMAMH1.Width = 150;
+            this.colMAMH1.Width = 300;
             // 
             // colMALOP1
             // 
             this.colMALOP1.FieldName = "MALOP";
-            this.colMALOP1.MinWidth = 40;
+            this.colMALOP1.MinWidth = 80;
             this.colMALOP1.Name = "colMALOP1";
             this.colMALOP1.Visible = true;
             this.colMALOP1.VisibleIndex = 2;
-            this.colMALOP1.Width = 150;
+            this.colMALOP1.Width = 300;
             // 
             // colTRINHDO
             // 
             this.colTRINHDO.FieldName = "TRINHDO";
-            this.colTRINHDO.MinWidth = 40;
+            this.colTRINHDO.MinWidth = 80;
             this.colTRINHDO.Name = "colTRINHDO";
             this.colTRINHDO.Visible = true;
             this.colTRINHDO.VisibleIndex = 3;
-            this.colTRINHDO.Width = 150;
+            this.colTRINHDO.Width = 300;
             // 
             // colNGAYTHI
             // 
             this.colNGAYTHI.FieldName = "NGAYTHI";
-            this.colNGAYTHI.MinWidth = 40;
+            this.colNGAYTHI.MinWidth = 80;
             this.colNGAYTHI.Name = "colNGAYTHI";
             this.colNGAYTHI.Visible = true;
             this.colNGAYTHI.VisibleIndex = 4;
-            this.colNGAYTHI.Width = 150;
+            this.colNGAYTHI.Width = 300;
             // 
             // colLAN
             // 
             this.colLAN.FieldName = "LAN";
-            this.colLAN.MinWidth = 40;
+            this.colLAN.MinWidth = 80;
             this.colLAN.Name = "colLAN";
             this.colLAN.Visible = true;
             this.colLAN.VisibleIndex = 5;
-            this.colLAN.Width = 150;
+            this.colLAN.Width = 300;
             // 
             // colSOCAUTHI
             // 
             this.colSOCAUTHI.FieldName = "SOCAUTHI";
-            this.colSOCAUTHI.MinWidth = 40;
+            this.colSOCAUTHI.MinWidth = 80;
             this.colSOCAUTHI.Name = "colSOCAUTHI";
             this.colSOCAUTHI.Visible = true;
             this.colSOCAUTHI.VisibleIndex = 6;
-            this.colSOCAUTHI.Width = 150;
+            this.colSOCAUTHI.Width = 300;
             // 
             // colTHOIGIAN
             // 
             this.colTHOIGIAN.FieldName = "THOIGIAN";
-            this.colTHOIGIAN.MinWidth = 40;
+            this.colTHOIGIAN.MinWidth = 80;
             this.colTHOIGIAN.Name = "colTHOIGIAN";
             this.colTHOIGIAN.Visible = true;
             this.colTHOIGIAN.VisibleIndex = 7;
-            this.colTHOIGIAN.Width = 150;
+            this.colTHOIGIAN.Width = 300;
             // 
             // gcGVDK
             // 
             this.gcGVDK.DataSource = this.bdsGVDK;
             this.gcGVDK.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gcGVDK.Location = new System.Drawing.Point(815, 461);
+            this.gcGVDK.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
+            this.gcGVDK.Location = new System.Drawing.Point(812, 461);
             this.gcGVDK.MainView = this.gridView3;
+            this.gcGVDK.Margin = new System.Windows.Forms.Padding(6);
             this.gcGVDK.MenuManager = this.barManager1;
             this.gcGVDK.Name = "gcGVDK";
-            this.gcGVDK.Size = new System.Drawing.Size(1749, 502);
+            this.gcGVDK.Size = new System.Drawing.Size(1752, 502);
             this.gcGVDK.TabIndex = 15;
             this.gcGVDK.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});

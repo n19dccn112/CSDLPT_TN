@@ -16,6 +16,7 @@ namespace DXApplication1
         private DataTable dt = new DataTable();
         private bool themDe = false;
         private int vitri = 0;
+        int check_them_cmb = 1;
         public FormNhapDe()
         {
             InitializeComponent();
@@ -69,33 +70,34 @@ namespace DXApplication1
             tbTenGV.Text = Program.mHoten;
             tbMaGV.Text = Program.username;
 
-            string maMH = ((DataRowView)bdsBoDe[bdsBoDe.Position])["MAMH"].ToString();          
-            dt = Program.ExecSqlDataTable("SELECT MAMH,TENMH FROM MONHOC");
-            cmbTenMH.DataSource = dt;
-            cmbTenMH.DisplayMember = "TENMH";
-            cmbTenMH.ValueMember = "MAMH";
-            cmbTenMH.SelectedIndex = 0;
-            foreach (var item in cmbTenMH.Items)
+            if (bdsBoDe.Count > 0)
             {
-                if (((DataRowView)item)[cmbTenMH.ValueMember].ToString() == maMH)
+                string maMH = ((DataRowView)bdsBoDe[bdsBoDe.Position])["MAMH"].ToString();
+                dt = Program.ExecSqlDataTable("SELECT MAMH,TENMH FROM MONHOC");
+                cmbTenMH.DataSource = dt;
+                cmbTenMH.DisplayMember = "TENMH";
+                cmbTenMH.ValueMember = "MAMH";
+                cmbTenMH.SelectedIndex = 0;
+                foreach (var item in cmbTenMH.Items)
                 {
-                    cmbTenMH.SelectedItem = item;
-                    break;
+                    if (((DataRowView)item)[cmbTenMH.ValueMember].ToString() == maMH)
+                    {
+                        cmbTenMH.SelectedItem = item;
+                        break;
+                    }
                 }
             }
 
             if (Program.mGroup == "TRUONG")
             {
-                btnGhi.Enabled = btnThem.Enabled = btnPhucHoi.Enabled = btnXoa.Enabled = btnSua.Enabled = btnHuy.Enabled = cmbDapAn.Enabled = false;
-                edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = false;
-                edtCauHoi.Enabled = edtMaMH.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = tbMaGV.Enabled = tbTenGV.Enabled = false;
+                btnGhi.Enabled = btnThem.Enabled = btnPhucHoi.Enabled = btnXoa.Enabled = btnSua.Enabled = btnHuy.Enabled  = false;
+                pnNhapDe.Enabled = false;
             }
-            else
+            else  //CS - GV
             {
-
-                edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = cmbDapAn.Enabled = false;
+                btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = true;
                 btnPhucHoi.Enabled = btnHuy.Enabled = btnGhi.Enabled = false;
-                edtCauHoi.Enabled = edtMaMH.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = tbMaGV.Enabled = tbTenGV.Enabled = false;
+                pnNhapDe.Enabled = false;
                 if (bdsBoDe.Count == 0)
                 {
                     btnXoa.Enabled = btnSua.Enabled = false;
@@ -104,13 +106,12 @@ namespace DXApplication1
             }
             
 
+
         }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             themDe = true;
-            cmbDapAn.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = true;
-
-            edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = true;
+            
             bdsBoDe.AddNew();
             ((DataRowView)bdsBoDe[bdsBoDe.Position])["MAGV"] = Program.username; // Mã gv khi đăng nhập vào
             tbTenGV.Text = Program.mHoten; // tên gv tạo đề
@@ -126,22 +127,28 @@ namespace DXApplication1
             cmbTenMH.ValueMember = "MAMH";
             cmbTenMH.SelectedIndex = 0;
 
+            if (check_them_cmb == 1)
+            {
+                cmbTrinhDo.Items.Add("A");
+                cmbTrinhDo.Items.Add("B");
+                cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
 
-            cmbTrinhDo.Items.Add("A");
-            cmbTrinhDo.Items.Add("B");
-            cmbTrinhDo.Items.Add("C");
-            cmbTrinhDo.SelectedIndex = 0;
-
-            cmbDapAn.Items.Add("A");
-            cmbDapAn.Items.Add("B");
-            cmbDapAn.Items.Add("C");
-            cmbDapAn.Items.Add("D");
-            cmbDapAn.SelectedIndex = 0;
-
+                cmbDapAn.Items.Add("A");
+                cmbDapAn.Items.Add("B");
+                cmbDapAn.Items.Add("C");
+                cmbDapAn.Items.Add("D");
+                cmbDapAn.SelectedIndex = 0;
+            }
+            check_them_cmb = 2;
 
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnThoat.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
+            cmbDapAn.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = true;
+            edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = true;
             gcBoDe.Enabled = false;
+            pnNhapDe.Enabled = true;
+            edtCauHoi.Enabled = edtMaMH.Enabled = tbMaGV.Enabled = tbTenGV.Enabled = false;
 
         }
 
@@ -256,19 +263,18 @@ namespace DXApplication1
 
         }
         
-
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             cmbDapAn.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = true;
             edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = true;
-
-            vitri = bdsBoDe.Position;
-
             gcBoDe.Enabled = false;
-
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnThoat.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
+            pnNhapDe.Enabled = true;
+            edtCauHoi.Enabled = edtMaMH.Enabled = tbMaGV.Enabled = tbTenGV.Enabled = false;
 
+
+            vitri = bdsBoDe.Position;
             themDe = false;
             string maMH = ((DataRowView)bdsBoDe[bdsBoDe.Position])["MAMH"].ToString();
             dt = Program.ExecSqlDataTable("SELECT MAMH,TENMH FROM MONHOC");
@@ -283,23 +289,22 @@ namespace DXApplication1
                     break;
                 }
             }
-            //cmbTenMH.SelectedIndex = 0;
+            
+            if (check_them_cmb == 1)
+            {
+                cmbTrinhDo.Items.Add("A");
+                cmbTrinhDo.Items.Add("B");
+                cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
 
-
-
-
-            cmbTrinhDo.Items.Add("A");
-            cmbTrinhDo.Items.Add("B");
-            cmbTrinhDo.Items.Add("C");
-            cmbTrinhDo.SelectedIndex = 0;
-
-            cmbDapAn.Items.Add("A");
-            cmbDapAn.Items.Add("B");
-            cmbDapAn.Items.Add("C");
-            cmbDapAn.Items.Add("D");
-            cmbDapAn.SelectedIndex = 0;
+                cmbDapAn.Items.Add("A");
+                cmbDapAn.Items.Add("B");
+                cmbDapAn.Items.Add("C");
+                cmbDapAn.Items.Add("D");
+                cmbDapAn.SelectedIndex = 0;
+            }
+            check_them_cmb = 2;
         }
-
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (bdsBaiThi.Count > 0)
@@ -331,6 +336,7 @@ namespace DXApplication1
                 }
 
             }
+            pnNhapDe.Enabled = false;
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -406,8 +412,7 @@ namespace DXApplication1
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            edtA.Enabled = edtB.Enabled = edtC.Enabled = edtD.Enabled = edtNoiDung.Enabled = false;
-            cmbDapAn.Enabled = cmbTenMH.Enabled = cmbTrinhDo.Enabled = false;
+            pnNhapDe.Enabled = false;
             if (themDe) 
                 bdsBoDe.RemoveCurrent(); 
             else bdsBoDe.CancelEdit();

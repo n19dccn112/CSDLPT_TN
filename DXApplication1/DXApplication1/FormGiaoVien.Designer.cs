@@ -35,8 +35,8 @@ namespace DXApplication1
             System.Windows.Forms.Label tENLabel;
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label mAKHLabel;
-            System.Windows.Forms.Label tENCSLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVien));
+            this.tENCSLabel = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -55,14 +55,15 @@ namespace DXApplication1
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.edtDiaChi = new DevExpress.XtraEditors.TextEdit();
+            this.bdsGV = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsKhoa = new System.Windows.Forms.BindingSource(this.components);
+            this.dS = new DXApplication1.DS();
             this.edtTen = new DevExpress.XtraEditors.TextEdit();
             this.edtHo = new DevExpress.XtraEditors.TextEdit();
             this.edtMaGV = new DevExpress.XtraEditors.TextEdit();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cmbCoSo = new System.Windows.Forms.ComboBox();
             this.bdsCoSo = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new DXApplication1.DS();
-            this.bdsKhoa = new System.Windows.Forms.BindingSource(this.components);
             this.kHOATableAdapter = new DXApplication1.DSTableAdapters.KHOATableAdapter();
             this.tableAdapterManager = new DXApplication1.DSTableAdapters.TableAdapterManager();
             this.bODETableAdapter = new DXApplication1.DSTableAdapters.BODETableAdapter();
@@ -76,7 +77,6 @@ namespace DXApplication1
             this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnGV = new System.Windows.Forms.Panel();
             this.edtMaKhoa = new DevExpress.XtraEditors.TextEdit();
-            this.bdsGV = new System.Windows.Forms.BindingSource(this.components);
             this.gcGV = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAGV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -91,21 +91,20 @@ namespace DXApplication1
             tENLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
-            tENCSLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtDiaChi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtTen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtHo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaGV.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCoSo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.pnGV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaKhoa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBoDe)).BeginInit();
@@ -115,56 +114,57 @@ namespace DXApplication1
             // mAGVLabel
             // 
             mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(73, 62);
+            mAGVLabel.Location = new System.Drawing.Point(42, 65);
             mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(80, 25);
+            mAGVLabel.Size = new System.Drawing.Size(161, 25);
             mAGVLabel.TabIndex = 0;
-            mAGVLabel.Text = "MAGV:";
+            mAGVLabel.Text = "MÃ GIÁO VIÊN:";
             // 
             // hOLabel
             // 
             hOLabel.AutoSize = true;
-            hOLabel.Location = new System.Drawing.Point(104, 125);
+            hOLabel.Location = new System.Drawing.Point(151, 125);
             hOLabel.Name = "hOLabel";
             hOLabel.Size = new System.Drawing.Size(49, 25);
             hOLabel.TabIndex = 2;
-            hOLabel.Text = "HO:";
+            hOLabel.Text = "HỌ:";
             // 
             // tENLabel
             // 
             tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(93, 187);
+            tENLabel.Location = new System.Drawing.Point(140, 187);
             tENLabel.Name = "tENLabel";
             tENLabel.Size = new System.Drawing.Size(60, 25);
             tENLabel.TabIndex = 4;
-            tENLabel.Text = "TEN:";
+            tENLabel.Text = "TÊN:";
             // 
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(66, 253);
+            dIACHILabel.Location = new System.Drawing.Point(107, 256);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(87, 25);
+            dIACHILabel.Size = new System.Drawing.Size(93, 25);
             dIACHILabel.TabIndex = 6;
-            dIACHILabel.Text = "DIACHI:";
+            dIACHILabel.Text = "ĐỊA CHỈ:";
+            dIACHILabel.Click += new System.EventHandler(this.dIACHILabel_Click);
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(74, 315);
+            mAKHLabel.Location = new System.Drawing.Point(91, 318);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(79, 25);
+            mAKHLabel.Size = new System.Drawing.Size(115, 25);
             mAKHLabel.TabIndex = 8;
-            mAKHLabel.Text = "MAKH:";
+            mAKHLabel.Text = "MÃ KHOA:";
             // 
             // tENCSLabel
             // 
-            tENCSLabel.AutoSize = true;
-            tENCSLabel.Location = new System.Drawing.Point(624, 9);
-            tENCSLabel.Name = "tENCSLabel";
-            tENCSLabel.Size = new System.Drawing.Size(89, 25);
-            tENCSLabel.TabIndex = 0;
-            tENCSLabel.Text = "TENCS:";
+            this.tENCSLabel.AutoSize = true;
+            this.tENCSLabel.Location = new System.Drawing.Point(624, 9);
+            this.tENCSLabel.Name = "tENCSLabel";
+            this.tENCSLabel.Size = new System.Drawing.Size(89, 25);
+            this.tENCSLabel.TabIndex = 0;
+            this.tENCSLabel.Text = "TENCS:";
             // 
             // barManager1
             // 
@@ -345,16 +345,31 @@ namespace DXApplication1
             // edtDiaChi
             // 
             this.edtDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGV, "DIACHI", true));
-            this.edtDiaChi.Location = new System.Drawing.Point(159, 250);
+            this.edtDiaChi.Location = new System.Drawing.Point(225, 250);
             this.edtDiaChi.MenuManager = this.barManager1;
             this.edtDiaChi.Name = "edtDiaChi";
             this.edtDiaChi.Size = new System.Drawing.Size(355, 40);
             this.edtDiaChi.TabIndex = 7;
             // 
+            // bdsGV
+            // 
+            this.bdsGV.DataMember = "FK_GIAOVIEN_KHOA";
+            this.bdsGV.DataSource = this.bdsKhoa;
+            // 
+            // bdsKhoa
+            // 
+            this.bdsKhoa.DataMember = "KHOA";
+            this.bdsKhoa.DataSource = this.dS;
+            // 
+            // dS
+            // 
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // edtTen
             // 
             this.edtTen.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGV, "TEN", true));
-            this.edtTen.Location = new System.Drawing.Point(159, 184);
+            this.edtTen.Location = new System.Drawing.Point(225, 184);
             this.edtTen.MenuManager = this.barManager1;
             this.edtTen.Name = "edtTen";
             this.edtTen.Size = new System.Drawing.Size(355, 40);
@@ -363,7 +378,7 @@ namespace DXApplication1
             // edtHo
             // 
             this.edtHo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGV, "HO", true));
-            this.edtHo.Location = new System.Drawing.Point(159, 122);
+            this.edtHo.Location = new System.Drawing.Point(225, 122);
             this.edtHo.MenuManager = this.barManager1;
             this.edtHo.Name = "edtHo";
             this.edtHo.Size = new System.Drawing.Size(355, 40);
@@ -372,7 +387,7 @@ namespace DXApplication1
             // edtMaGV
             // 
             this.edtMaGV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGV, "MAGV", true));
-            this.edtMaGV.Location = new System.Drawing.Point(159, 59);
+            this.edtMaGV.Location = new System.Drawing.Point(225, 59);
             this.edtMaGV.MenuManager = this.barManager1;
             this.edtMaGV.Name = "edtMaGV";
             this.edtMaGV.Size = new System.Drawing.Size(355, 40);
@@ -380,7 +395,7 @@ namespace DXApplication1
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(tENCSLabel);
+            this.panel2.Controls.Add(this.tENCSLabel);
             this.panel2.Controls.Add(this.cmbCoSo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 67);
@@ -402,16 +417,6 @@ namespace DXApplication1
             // 
             this.bdsCoSo.DataMember = "COSO";
             this.bdsCoSo.DataSource = this.dS;
-            // 
-            // dS
-            // 
-            this.dS.DataSetName = "DS";
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bdsKhoa
-            // 
-            this.bdsKhoa.DataMember = "KHOA";
-            this.bdsKhoa.DataSource = this.dS;
             // 
             // kHOATableAdapter
             // 
@@ -519,16 +524,11 @@ namespace DXApplication1
             // edtMaKhoa
             // 
             this.edtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsGV, "MAKH", true));
-            this.edtMaKhoa.Location = new System.Drawing.Point(159, 312);
+            this.edtMaKhoa.Location = new System.Drawing.Point(225, 312);
             this.edtMaKhoa.MenuManager = this.barManager1;
             this.edtMaKhoa.Name = "edtMaKhoa";
             this.edtMaKhoa.Size = new System.Drawing.Size(355, 40);
             this.edtMaKhoa.TabIndex = 9;
-            // 
-            // bdsGV
-            // 
-            this.bdsGV.DataMember = "FK_GIAOVIEN_KHOA";
-            this.bdsGV.DataSource = this.bdsKhoa;
             // 
             // gcGV
             // 
@@ -627,20 +627,20 @@ namespace DXApplication1
             this.Load += new System.EventHandler(this.FormGiaoVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtDiaChi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtTen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtHo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaGV.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCoSo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.pnGV.ResumeLayout(false);
             this.pnGV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.edtMaKhoa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBoDe)).EndInit();
@@ -701,5 +701,6 @@ namespace DXApplication1
         private System.Windows.Forms.BindingSource bdsBoDe;
         private DSTableAdapters.GIAOVIEN_DANGKYTableAdapter gIAOVIEN_DANGKYTableAdapter;
         private System.Windows.Forms.BindingSource bdsGVDK;
+        private System.Windows.Forms.Label tENCSLabel;
     }
 }

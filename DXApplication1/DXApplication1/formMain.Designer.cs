@@ -43,6 +43,7 @@ namespace DXApplication1
             this.btnGiaoVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhapDe = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKiThi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXemDSDKThi = new DevExpress.XtraBars.BarButtonItem();
             this.ribnHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribnHeThongCon = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribnDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -57,6 +58,7 @@ namespace DXApplication1
             this.lableMa = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelTenDN = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelNhom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnXemBangDiem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -78,10 +80,12 @@ namespace DXApplication1
             this.btnSinhVien,
             this.btnGiaoVien,
             this.btnNhapDe,
-            this.btnDangKiThi});
+            this.btnDangKiThi,
+            this.btnXemDSDKThi,
+            this.btnXemBangDiem});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(22);
-            this.ribbonControl1.MaxItemId = 14;
+            this.ribbonControl1.MaxItemId = 16;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribnHeThong,
@@ -188,6 +192,15 @@ namespace DXApplication1
             this.btnDangKiThi.Name = "btnDangKiThi";
             this.btnDangKiThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKiThi_ItemClick);
             // 
+            // btnXemDSDKThi
+            // 
+            this.btnXemDSDKThi.Caption = "Xem DSDK Thi";
+            this.btnXemDSDKThi.Id = 14;
+            this.btnXemDSDKThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXemDSDKThi.ImageOptions.Image")));
+            this.btnXemDSDKThi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnXemDSDKThi.ImageOptions.LargeImage")));
+            this.btnXemDSDKThi.Name = "btnXemDSDKThi";
+            this.btnXemDSDKThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXemDSDKThi_ItemClick);
+            // 
             // ribnHeThong
             // 
             this.ribnHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -230,6 +243,8 @@ namespace DXApplication1
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnXemDSDKThi);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnXemBangDiem);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
@@ -284,6 +299,15 @@ namespace DXApplication1
             this.labelNhom.Size = new System.Drawing.Size(82, 32);
             this.labelNhom.Text = "Nhóm";
             // 
+            // btnXemBangDiem
+            // 
+            this.btnXemBangDiem.Caption = "Xem Bảng Điểm";
+            this.btnXemBangDiem.Id = 15;
+            this.btnXemBangDiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnXemBangDiem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnXemBangDiem.Name = "btnXemBangDiem";
+            this.btnXemBangDiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXemBangDiem_ItemClick);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -333,6 +357,8 @@ namespace DXApplication1
         private DevExpress.XtraBars.BarButtonItem btnGiaoVien;
         private DevExpress.XtraBars.BarButtonItem btnNhapDe;
         private DevExpress.XtraBars.BarButtonItem btnDangKiThi;
+        private DevExpress.XtraBars.BarButtonItem btnXemDSDKThi;
+        private DevExpress.XtraBars.BarButtonItem btnXemBangDiem;
     }
 }
 

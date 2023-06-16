@@ -36,16 +36,16 @@ namespace DXApplication1
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled =  btnSinhVien.Enabled = btnGiaoVien.Enabled = btnDangKiThi.Enabled = btnNhapDe.Enabled = false;
-                btnThi.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled =  btnSinhVien.Enabled = btnGiaoVien.Enabled  = btnNhapDe.Enabled = btnDangKiThi.Enabled = false;
+                btnThi.Enabled =  true;
             }
             else if (Program.mGroup == "GIANGVIEN")
             {
                 barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnDangKiThi.Enabled =  false;
+                //btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
+                btnMH.Enabled =  btnDangKiThi.Enabled = btnKhoaLop.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = false;
                 btnThi.Enabled = btnNhapDe.Enabled =  true;
 
             }
@@ -54,7 +54,7 @@ namespace DXApplication1
                 barBtnDangNhap.Enabled = false;
                 barBtnDangXuat.Enabled = barBtnTaoTaiKhoan.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
-                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
+                btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnNhapDe.Enabled = btnDangKiThi.Enabled = true;
             }
             else if (Program.mGroup == "COSO")
             {
@@ -62,6 +62,17 @@ namespace DXApplication1
                 barBtnDangXuat.Enabled = barBtnTaoTaiKhoan.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
                 btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnNhapDe.Enabled = btnDangKiThi.Enabled = true;
+              
+            }
+            if (Program.mCoso == 2)
+            {
+                barBtnDangNhap.Enabled = barBtnTaoTaiKhoan.Enabled = false;
+                barBtnDangXuat.Enabled = true;
+                ribnDanhMuc.Visible =  true;
+                btnMH.Enabled = btnThi.Enabled = btnKhoaLop.Enabled  = btnSinhVien.Enabled = btnGiaoVien.Enabled = btnNhapDe.Enabled = btnDangKiThi.Enabled = false;
+                btnSinhVien.Enabled = btnKhoaLop.Enabled = true;
+                ribnBaoCao.Visible = false;
+
             }
         }
 
@@ -215,6 +226,30 @@ namespace DXApplication1
             else
             {
                 FormDangKiThi f = new FormDangKiThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnXemDSDKThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormXtraReportXemDSDKThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormXtraReportXemDSDKThi f = new FormXtraReportXemDSDKThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnXemBangDiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormXtraReportXemBangDiem));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormXtraReportXemBangDiem f = new FormXtraReportXemBangDiem();
                 f.MdiParent = this;
                 f.Show();
             }
