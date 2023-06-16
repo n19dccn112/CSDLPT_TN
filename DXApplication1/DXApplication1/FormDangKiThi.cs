@@ -15,6 +15,7 @@ namespace DXApplication1
     {
         private int vitri;
         Boolean dangThem;
+        private int check_add = 1;
         private DataTable dt = new DataTable();
         public FormDangKiThi()
         {
@@ -92,34 +93,36 @@ namespace DXApplication1
             cmbTenGV.ValueMember = "MAGV";
             cmbTenGV.SelectedIndex = 0;
             
-            
             edtMaMH.Text = ((DataRowView)bdsMonHoc[bdsMonHoc.Position])["MAMH"].ToString();
             edtMaLop.Text = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
 
-            cmbLanThi.Items.Add("1");
-            cmbLanThi.Items.Add("2");
-            cmbLanThi.SelectedIndex = 0;
+            if (check_add == 1)
+            {
+                cmbLanThi.Items.Add("1");
+                cmbLanThi.Items.Add("2");
+                cmbLanThi.SelectedIndex = 0;
 
-            cmbSoCauThi.Items.Add("10");
-            cmbSoCauThi.Items.Add("20");
-            cmbSoCauThi.Items.Add("30");         
-            cmbSoCauThi.Items.Add("50");
-            cmbSoCauThi.Items.Add("60");
-            cmbSoCauThi.Items.Add("100");
-            cmbSoCauThi.SelectedIndex = 0;
+                cmbSoCauThi.Items.Add("10");
+                cmbSoCauThi.Items.Add("20");
+                cmbSoCauThi.Items.Add("30");
+                cmbSoCauThi.Items.Add("50");
+                cmbSoCauThi.Items.Add("60");
+                cmbSoCauThi.Items.Add("100");
+                cmbSoCauThi.SelectedIndex = 0;
 
-            cmbThoiGian.Items.Add("15");
-            cmbThoiGian.Items.Add("20");
-            cmbThoiGian.Items.Add("30");
-            cmbThoiGian.Items.Add("50");
-            cmbThoiGian.Items.Add("60");
-            cmbThoiGian.SelectedIndex = 0;
+                cmbThoiGian.Items.Add("15");
+                cmbThoiGian.Items.Add("20");
+                cmbThoiGian.Items.Add("30");
+                cmbThoiGian.Items.Add("50");
+                cmbThoiGian.Items.Add("60");
+                cmbThoiGian.SelectedIndex = 0;
 
-            cmbTrinhDo.Items.Add("A");
-            cmbTrinhDo.Items.Add("B");
-            cmbTrinhDo.Items.Add("C");
-            cmbTrinhDo.SelectedIndex = 0;
-
+                cmbTrinhDo.Items.Add("A");
+                cmbTrinhDo.Items.Add("B");
+                cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
+            }
+            check_add = 2;
             dangThem = true;
         }
 
@@ -132,6 +135,33 @@ namespace DXApplication1
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = btnThoat.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
             //txtMaGV.Enabled = false;
+            if (check_add == 1)
+            {
+                cmbLanThi.Items.Add("1");
+                cmbLanThi.Items.Add("2");
+                cmbLanThi.SelectedIndex = 0;
+
+                cmbSoCauThi.Items.Add("10");
+                cmbSoCauThi.Items.Add("20");
+                cmbSoCauThi.Items.Add("30");
+                cmbSoCauThi.Items.Add("50");
+                cmbSoCauThi.Items.Add("60");
+                cmbSoCauThi.Items.Add("100");
+                cmbSoCauThi.SelectedIndex = 0;
+
+                cmbThoiGian.Items.Add("15");
+                cmbThoiGian.Items.Add("20");
+                cmbThoiGian.Items.Add("30");
+                cmbThoiGian.Items.Add("50");
+                cmbThoiGian.Items.Add("60");
+                cmbThoiGian.SelectedIndex = 0;
+
+                cmbTrinhDo.Items.Add("A");
+                cmbTrinhDo.Items.Add("B");
+                cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
+            }
+            check_add = 2;
             dangThem = false;
         }
 
@@ -397,7 +427,6 @@ namespace DXApplication1
                 edtMaGV.Text = maGV;
             }
         }
-
         private void edtMaGV_EditValueChanged(object sender, EventArgs e)
         {
             if (bdsGVDK.Count > 0)

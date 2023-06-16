@@ -45,8 +45,8 @@ namespace DXApplication1
                 barBtnDangXuat.Enabled = true;
                 ribnDanhMuc.Visible = ribnBaoCao.Visible = true;
                 //btnMH.Enabled = btnKhoaLop.Enabled = btnThi.Enabled = true;
-                btnMH.Enabled =  btnDangKiThi.Enabled = btnKhoaLop.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = false;
-                btnThi.Enabled = btnNhapDe.Enabled =  true;
+                btnMH.Enabled =   btnKhoaLop.Enabled = btnSinhVien.Enabled = btnGiaoVien.Enabled = false;
+                btnThi.Enabled = btnNhapDe.Enabled = btnDangKiThi.Enabled = true;
 
             }
             else if (Program.mGroup == "TRUONG")
