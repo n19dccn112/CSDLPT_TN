@@ -30,8 +30,7 @@ namespace DXApplication1
             dS.EnforceConstraints = false;
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
             this.lOPTableAdapter.Fill(this.dS.LOP);
-            this.cOSOTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.cOSOTableAdapter.Fill(this.dS.COSO);
+            
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
             this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -85,13 +84,24 @@ namespace DXApplication1
             edtMaLop.Enabled = edtMaMH.Enabled = cmbTenMH.Enabled = false;
             gcGVDK.Enabled = gcLop.Enabled = gcMonHoc.Enabled = false;
 
+            if (Program.mGroup == "GIANGVIEN")
+            {
+                edtMaGV.Text = Program.username;
+                cmbTenGV.Text = Program.mHoten;
+                edtMaGV.Enabled = cmbTenGV.Enabled = false;
+            }else  //CS
+            {
+                dt = Program.ExecSqlDataTable("EXEC [dbo].[SP_LayHOTENgiaoVien]");
+                cmbTenGV.DataSource = dt;
+                cmbTenGV.DisplayMember = "HOTEN";
+                cmbTenGV.ValueMember = "MAGV";
+                cmbTenGV.SelectedIndex = 0;
+                edtMaGV.Enabled = cmbTenGV.Enabled = true;
+            }
+
             btnReload.Enabled = false;
 
-            dt = Program.ExecSqlDataTable("EXEC [dbo].[SP_LayHOTENgiaoVien]");
-            cmbTenGV.DataSource = dt;
-            cmbTenGV.DisplayMember = "HOTEN";
-            cmbTenGV.ValueMember = "MAGV";
-            cmbTenGV.SelectedIndex = 0;
+            
             
             edtMaMH.Text = ((DataRowView)bdsMonHoc[bdsMonHoc.Position])["MAMH"].ToString();
             edtMaLop.Text = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
@@ -120,6 +130,12 @@ namespace DXApplication1
                 cmbTrinhDo.Items.Add("A");
                 cmbTrinhDo.Items.Add("B");
                 cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
+            }else
+            {
+                cmbLanThi.SelectedIndex = 0;
+                cmbSoCauThi.SelectedIndex = 0;
+                cmbThoiGian.SelectedIndex = 0;
                 cmbTrinhDo.SelectedIndex = 0;
             }
             check_add = 2;
@@ -159,6 +175,13 @@ namespace DXApplication1
                 cmbTrinhDo.Items.Add("A");
                 cmbTrinhDo.Items.Add("B");
                 cmbTrinhDo.Items.Add("C");
+                cmbTrinhDo.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbLanThi.SelectedIndex = 0;
+                cmbSoCauThi.SelectedIndex = 0;
+                cmbThoiGian.SelectedIndex = 0;
                 cmbTrinhDo.SelectedIndex = 0;
             }
             check_add = 2;
@@ -429,20 +452,22 @@ namespace DXApplication1
         }
         private void edtMaGV_EditValueChanged(object sender, EventArgs e)
         {
-            if (bdsGVDK.Count > 0)
+            if (bdsGVDK.Count > 0 || edtMaGV.Text !="")
             {
                 string maGV = ((DataRowView)bdsGVDK[bdsGVDK.Position])["MAGV"].ToString();
+                if (maGV == "") { return; }
                 dt = Program.ExecSqlDataTable("EXEC [dbo].[SP_LayHOTEN_theo_MaGV] '" + maGV + "'");
                 cmbTenGV.DataSource = dt;
                 cmbTenGV.DisplayMember = "HOTEN";
                 cmbTenGV.ValueMember = "MAGV";
                 cmbTenGV.SelectedIndex = 0;
-                
             }
             else
             {
                 cmbTenGV.SelectedItem = null;
             }
         }
+
+       
     }
 }
